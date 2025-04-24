@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pintura por Números</title>
+  <link rel="stylesheet" href="../css/pintura.css">
+</head>
+<body>
+  <header>
+    <h1>🎨 Pintura por Números</h1>
+    <p>Escolha a cor para pintar as áreas numeradas!</p>
+  </header>
+
+  <main class="game-container">
+    <div class="image-container">
+      <img id="image" src="../imagens/pintura/imagem-numerada.png" alt="Imagem Numerada" />
+      <div class="numbers">
+        <!-- Exemplo de áreas numeradas -->
+        <div class="number" style="top: 100px; left: 150px;" data-number="1"></div>
+        <div class="number" style="top: 200px; left: 250px;" data-number="2"></div>
+        <div class="number" style="top: 300px; left: 350px;" data-number="3"></div>
+        <!-- Adicione mais áreas numeradas conforme a imagem -->
+      </div>
+    </div>
+
+    <div class="color-palette">
+      <button class="color" style="background-color: #FF5733;" data-color="#FF5733"></button>
+      <button class="color" style="background-color: #33FF57;" data-color="#33FF57"></button>
+      <button class="color" style="background-color: #3357FF;" data-color="#3357FF"></button>
+      <button class="color" style="background-color: #FF33A1;" data-color="#FF33A1"></button>
+      <!-- Adicione mais cores conforme necessário -->
+    </div>
+  </main>
+
+  <!-- Remover a visibilidade do botão de reiniciar até o jogo ser iniciado -->
+<button id="restart-btn" style="display: none;">🔁 Reiniciar Jogo</button>
+
+
+  <script src="../js/pintura.js"></script>
+</body>
+</html>

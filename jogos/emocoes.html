@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jogo das Emoções</title>
+    <link rel="stylesheet" href="../css/emocoes.css">
+</head>
+<body>
+    <div class="game-container">
+        <h1>Jogo das Emoções</h1>
+        <p>Escolha a emoção correta!</p>
+
+        <div class="emotion-display">
+            <!-- A imagem inicial será carregada pelo JS -->
+            <img id="emotionImage" alt="Emoção">
+        </div>
+
+        <div class="choices">
+            <button onclick="checkAnswer('surpresa')">Surpresa</button>
+            <button onclick="checkAnswer('feliz')">Feliz</button>
+            <button onclick="checkAnswer('triste')">Triste</button>
+            <button onclick="checkAnswer('raiva')">Raiva</button>
+        </div>
+
+        <div id="feedback"></div>
+    </div>
+
+    
+    <script src="../js/emocoes.js"></script>
+</body>
+</html>

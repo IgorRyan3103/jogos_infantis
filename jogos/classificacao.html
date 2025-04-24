@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Jogo de Classificação</title>
+  <link rel="stylesheet" href="../css/classificacao.css"/>
+</head>
+<body>
+  <header>
+    <h1>🗂️ Jogo de Classificação</h1>
+    <p>Arraste o objeto para a categoria correta!</p>
+  </header>
+
+  <main class="game-container">
+    <div class="images">
+      <!-- Frutas -->
+      <img id="image1" class="draggable" draggable="true" src="../imagens/classificaçao/banana.png" alt="Banana"/>
+      <img id="image4" class="draggable" draggable="true" src="../imagens/classificaçao/maca.png" alt="Maçã"/>
+
+      <!-- Transportes -->
+      <img id="image2" class="draggable" draggable="true" src="../imagens/classificaçao/carro.png" alt="Carro"/>
+      <img id="image5" class="draggable" draggable="true" src="../imagens/classificaçao/onibus.png" alt="Ônibus"/>
+
+      <!-- Brinquedos -->
+      <img id="image3" class="draggable" draggable="true" src="../imagens/classificaçao/bola.png" alt="Bola"/>
+      <img id="image6" class="draggable" draggable="true" src="../imagens/classificaçao/ursinho.png" alt="Ursinho"/>
+    </div>
+
+    <div class="categories">
+      <div id="category1" class="dropzone">
+        <h2>Frutas 🍎</h2>
+      </div>
+      <div id="category2" class="dropzone">
+        <h2>Transportes 🚗</h2>
+      </div>
+      <div id="category3" class="dropzone">
+        <h2>Brinquedos 🧸</h2>
+      </div>
+    </div>
+  </main>
+
+  <button id="restart-btn" style="display:none;">🔁 Jogar Novamente</button>
+
+  <script src="../js/classificacao.js"></script>
+</body>
+</html>
