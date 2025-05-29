@@ -75,7 +75,7 @@ html_jogos_v2/
 ## Como Usar
 
 1. Clone este repositório:  
-   `git clone https://igorryan3103.github.io/jogos_infantis/)  
+   git clone https://igorryan3103.github.io/jogos_infantis/
 
 2. Abra o arquivo `index.html` no seu navegador preferido.
 
