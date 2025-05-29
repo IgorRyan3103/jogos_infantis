@@ -14,8 +14,6 @@ Este projeto consiste em um site com 10 jogos educativos especialmente desenvolv
 
 ## Jogos Disponíveis
 
-### Jogos Originais
-
 1. **Jogo da Memória**
    - Encontre pares de cartas iguais
    - Três níveis de dificuldade (Fácil, Médio, Difícil)
