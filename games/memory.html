@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jogo da Memória - Jogos para Crianças Autistas</title>
+    <link rel="stylesheet" href="../styles/main.css">
+    <link rel="stylesheet" href="../styles/memory.css">
+</head>
+<body>
+    <div class="container">
+        <header class="game-header">
+            <a href="../index.html" class="button button-back" aria-label="Voltar para o menu principal">
+                <span class="back-icon">←</span> Voltar
+            </a>
+            <h1>Jogo da Memória</h1>
+        </header>
+        
+        <main>
+            <!-- Área de seleção de nível - visível inicialmente -->
+            <div id="level-selection" class="level-selection">
+                <h2>Escolha um nível</h2>
+                <div class="level-buttons">
+                    <button id="easy-button" class="button button-easy" data-level="easy" aria-label="Nível Fácil - 6 pares de cartas">
+                        Fácil
+                        <span class="level-description">6 pares de cartas</span>
+                    </button>
+                    <button id="medium-button" class="button button-medium" data-level="medium" aria-label="Nível Médio - 8 pares de cartas">
+                        Médio
+                        <span class="level-description">8 pares de cartas</span>
+                    </button>
+                    <button id="hard-button" class="button button-hard" data-level="hard" aria-label="Nível Difícil - 12 pares de cartas">
+                        Difícil
+                        <span class="level-description">12 pares de cartas</span>
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Área do jogo - inicialmente oculta -->
+            <div id="game-board" class="game-board hidden">
+                <div class="game-info">
+                    <div class="pairs-counter">
+                        Pares encontrados: <span id="pairs-found">0</span>/<span id="total-pairs">0</span>
+                    </div>
+                    <div id="feedback-message" class="feedback-message" aria-live="polite"></div>
+                </div>
+                
+                <div id="cards-container" class="cards-container">
+                    <!-- As cartas serão inseridas aqui via JavaScript -->
+                </div>
+                
+                <div class="game-controls">
+                    <button id="restart-button" class="button">Reiniciar</button>
+                    <button id="new-game-button" class="button">Novo Jogo</button>
+                </div>
+            </div>
+            
+            <!-- Área de conclusão - inicialmente oculta -->
+            <div id="completion-screen" class="completion-screen hidden">
+                <h2>Parabéns!</h2>
+                <p>Você encontrou todos os pares!</p>
+                <div class="completion-buttons">
+                    <button id="play-again-button" class="button button-easy">Jogar Novamente</button>
+                    <button id="choose-level-button" class="button button-medium">Escolher Nível</button>
+                    <a href="../index.html" class="button">Voltar ao Menu</a>
+                </div>
+            </div>
+        </main>
+        
+        <footer class="footer">
+            <p>Desenvolvido especialmente para crianças do espectro autista</p>
+            <div class="sound-control">
+                <label for="sound-toggle">Sons:</label>
+                <button id="sound-toggle" class="sound-button sound-on" aria-label="Ativar ou desativar sons">
+                    <span class="sound-icon">🔊</span>
+                </button>
+            </div>
+        </footer>
+    </div>
+    
+    <!-- Elementos de áudio para feedback sonoro -->
+    <audio id="flip-sound" preload="auto">
+        <source src="../assets/sounds/flip.mp3" type="audio/mpeg">
+    </audio>
+    <audio id="match-sound" preload="auto">
+        <source src="../assets/sounds/match.mp3" type="audio/mpeg">
+    </audio>
+    <audio id="success-sound" preload="auto">
+        <source src="../assets/sounds/success.mp3" type="audio/mpeg">
+    </audio>
+    
+    <script src="../scripts/memory.js"></script>
+</body>
+</html>

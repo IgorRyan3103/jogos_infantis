@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jogos Educativos para Crianças Autistas</title>
+    <link rel="stylesheet" href="styles/main.css">
+    <style>
+        .visually-hidden {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            margin: -1px;
+            padding: 0;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            border: 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="main-header">
+            <h1>Jogos Educativos para Crianças Autistas</h1>
+            <div class="sound-control">
+                <button id="sound-toggle" class="sound-button sound-on" aria-label="Ativar ou desativar sons">
+                    <span class="sound-icon">🔊</span>
+                </button>
+            </div>
+        </header>
+        
+        <main>
+            <section class="intro">
+                <p>Bem-vindo aos nossos jogos educativos especialmente desenvolvidos para crianças do espectro autista!</p>
+                <p>Escolha um jogo abaixo para começar:</p>
+            </section>
+            
+            <section class="game-grid">
+                <!-- Jogos originais -->
+                <div class="game-card">
+                    <button class="game-button" data-game="memory" aria-label="Jogo da Memória">
+                        <div class="game-icon memory-icon">🧠</div>
+                        <h2 class="game-name">Jogo da Memória</h2>
+                        <p class="game-description">Encontre os pares de cartas iguais</p>
+                    </button>
+                </div>
+                
+                <div class="game-card">
+                    <button class="game-button" data-game="puzzle" aria-label="Quebra-Cabeças">
+                        <div class="game-icon puzzle-icon">🧩</div>
+                        <h2 class="game-name">Quebra-Cabeças</h2>
+                        <p class="game-description">Monte imagens arrastando as peças</p>
+                    </button>
+                </div>
+                
+                <div class="game-card">
+                    <button class="game-button" data-game="colors" aria-label="Sequência de Cores">
+                        <div class="game-icon colors-icon">🌈</div>
+                        <h2 class="game-name">Sequência de Cores</h2>
+                        <p class="game-description">Memorize e repita sequências coloridas</p>
+                    </button>
+                </div>
+                
+                <div class="game-card">
+                    <button class="game-button" data-game="sorting" aria-label="Jogo de Ordenar">
+                        <div class="game-icon sorting-icon">📊</div>
+                        <h2 class="game-name">Jogo de Ordenar</h2>
+                        <p class="game-description">Organize objetos por tamanho ou cor</p>
+                    </button>
+                </div>
+                
+                <div class="game-card">
+                    <button class="game-button" data-game="music" aria-label="Sons e Músicas">
+                        <div class="game-icon music-icon">🎵</div>
+                        <h2 class="game-name">Sons e Músicas</h2>
+                        <p class="game-description">Explore sons, ritmos e melodias</p>
+                    </button>
+                </div>
+                
+                <!-- Novos jogos -->
+                <div class="game-card new-game">
+                    <button class="game-button" data-game="association" aria-label="Jogo de Associação">
+                        <div class="game-icon association-icon">🔄</div>
+                        <h2 class="game-name">Jogo de Associação</h2>
+                        <p class="game-description">Relacione objetos e conceitos</p>
+                        <span class="new-badge">Novo!</span>
+                    </button>
+                </div>
+                
+                <div class="game-card new-game">
+                    <button class="game-button" data-game="expressions" aria-label="Expressões Faciais">
+                        <div class="game-icon expressions-icon">😊</div>
+                        <h2 class="game-name">Expressões Faciais</h2>
+                        <p class="game-description">Aprenda a reconhecer emoções</p>
+                        <span class="new-badge">Novo!</span>
+                    </button>
+                </div>
+                
+                <div class="game-card new-game">
+                    <button class="game-button" data-game="maze" aria-label="Labirinto Simples">
+                        <div class="game-icon maze-icon">🌀</div>
+                        <h2 class="game-name">Labirinto Simples</h2>
+                        <p class="game-description">Encontre o caminho correto</p>
+                        <span class="new-badge">Novo!</span>
+                    </button>
+                </div>
+                
+                <div class="game-card new-game">
+                    <button class="game-button" data-game="counting" aria-label="Jogo de Contagem">
+                        <div class="game-icon counting-icon">🔢</div>
+                        <h2 class="game-name">Jogo de Contagem</h2>
+                        <p class="game-description">Aprenda matemática básica</p>
+                        <span class="new-badge">Novo!</span>
+                    </button>
+                </div>
+                
+                <div class="game-card new-game">
+                    <button class="game-button" data-game="story" aria-label="História Interativa">
+                        <div class="game-icon story-icon">📚</div>
+                        <h2 class="game-name">História Interativa</h2>
+                        <p class="game-description">Explore histórias com escolhas</p>
+                        <span class="new-badge">Novo!</span>
+                    </button>
+                </div>
+                
+                <!-- Novo Jogo PECS -->
+                <div class="game-card new-game">
+                    <button class="game-button" data-game="communication" aria-label="Comunicação Alternativa (PECS)">
+                        <div class="game-icon pecs-icon">🗣️</div> <!-- Ícone placeholder -->
+                        <h2 class="game-name">Comunicação Alternativa</h2>
+                        <p class="game-description">Use símbolos para se comunicar</p>
+                        <span class="new-badge">Novo!</span>
+                    </button>
+                </div>
+            </section>
+            
+            <section class="features">
+                <h2>Características dos Jogos</h2>
+                <div class="feature-grid">
+                    <div class="feature">
+                        <div class="feature-icon">👂</div>
+                        <h3>Feedback Sonoro</h3>
+                        <p>Sons suaves para cada interação</p>
+                    </div>
+                    
+                    <div class="feature">
+                        <div class="feature-icon">👁️</div>
+                        <h3>Visual Amigável</h3>
+                        <p>Cores suaves e não estimulantes</p>
+                    </div>
+                    
+                    <div class="feature">
+                        <div class="feature-icon">⌨️</div>
+                        <h3>Acessibilidade</h3>
+                        <p>Navegação completa por teclado</p>
+                    </div>
+                    
+                    <div class="feature">
+                        <div class="feature-icon">📱</div>
+                        <h3>Responsivo</h3>
+                        <p>Funciona em qualquer dispositivo</p>
+                    </div>
+                </div>
+            </section>
+            
+            <section class="about">
+                <h2>Sobre os Jogos</h2>
+                <p>Estes jogos foram especialmente desenvolvidos para atender às necessidades de crianças do espectro autista, com foco em:</p>
+                <ul>
+                    <li>Desenvolvimento de habilidades cognitivas</li>
+                    <li>Estímulo à coordenação motora</li>
+                    <li>Reconhecimento de padrões e sequências</li>
+                    <li>Compreensão de emoções e situações sociais</li>
+                    <li>Aprendizado de conceitos matemáticos básicos</li>
+                </ul>
+                <p>Todos os jogos foram projetados com interfaces simples, previsíveis e não estimulantes, respeitando as particularidades sensoriais das crianças autistas.</p>
+            </section>
+        </main>
+        
+        <footer class="footer">
+            <p>Desenvolvido especialmente para crianças do espectro autista</p>
+        </footer>
+    </div>
+    
+    <!-- Elementos de áudio -->
+    <audio id="click-sound" preload="auto">
+        <source src="assets/sounds/click.mp3" type="audio/mpeg">
+    </audio>
+    
+    <!-- Elemento para anúncios de leitor de tela -->
+    <div id="screen-reader-announcer" class="visually-hidden" aria-live="polite"></div>
+    
+    <script src="scripts/main.js"></script>
+</body>
+</html>

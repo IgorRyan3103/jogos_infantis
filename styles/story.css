@@ -1,0 +1,356 @@
+/* Estilos específicos para o jogo de História Interativa */
+
+.selection-screen {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 1rem;
+}
+
+.selection-screen h2 {
+  font-size: 1.8rem;
+  text-align: center;
+  margin-bottom: 1.5rem;
+  color: var(--primary);
+}
+
+/* Botões de história */
+.story-buttons {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.story-button {
+  background-color: var(--card-bg);
+  border: none;
+  border-radius: var(--radius);
+  padding: 1.5rem;
+  text-align: center;
+  cursor: pointer;
+  transition: transform var(--transition), box-shadow var(--transition);
+  box-shadow: 0 4px 8px var(--shadow);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.story-button:hover, .story-button:focus {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px var(--shadow);
+  outline: none;
+}
+
+.story-icon {
+  width: 80px;
+  height: 80px;
+  margin-bottom: 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 2.5rem;
+  background-color: var(--primary-light);
+  border-radius: 50%;
+}
+
+.story-name {
+  font-size: 1.4rem;
+  margin-bottom: 0.5rem;
+  color: var(--primary);
+}
+
+.story-description {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+}
+
+/* Tela da história */
+.story-screen {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 1rem;
+}
+
+.story-container {
+  background-color: var(--card-bg);
+  border-radius: var(--radius);
+  padding: 1.5rem;
+  box-shadow: 0 4px 8px var(--shadow);
+  margin-bottom: 2rem;
+}
+
+.story-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.story-header h2 {
+  font-size: 1.6rem;
+  color: var(--primary);
+  margin: 0;
+}
+
+.story-progress {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.progress-bar {
+  width: 150px;
+  height: 10px;
+  background-color: var(--background);
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  background-color: var(--primary);
+  width: 0%;
+  transition: width 0.3s ease;
+}
+
+.progress-text {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+}
+
+.story-content {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.story-scene {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.scene-image {
+  width: 100%;
+  max-width: 500px;
+  height: 250px;
+  background-color: var(--primary-light);
+  border-radius: var(--radius);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 3rem;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.story-text {
+  background-color: var(--background);
+  border-radius: var(--radius);
+  padding: 1.5rem;
+  font-size: 1.1rem;
+  line-height: 1.6;
+  position: relative;
+}
+
+.character-emotion {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--primary-light);
+}
+
+.emotion-icon {
+  width: 40px;
+  height: 40px;
+  background-color: var(--primary-light);
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.5rem;
+}
+
+.emotion-text {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  margin: 0;
+}
+
+.story-choices {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.story-choice {
+  background-color: var(--background);
+  border: 2px solid var(--primary-light);
+  border-radius: var(--radius);
+  padding: 1rem;
+  text-align: left;
+  cursor: pointer;
+  transition: background-color var(--transition), transform var(--transition);
+  font-size: 1rem;
+}
+
+.story-choice:hover, .story-choice:focus {
+  background-color: var(--primary-light);
+  transform: translateX(5px);
+  outline: none;
+}
+
+.story-choice.selected {
+  background-color: var(--primary-light);
+  border-color: var(--primary);
+}
+
+.story-controls {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+/* Tela de conclusão */
+.completion-screen {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 2rem;
+  background-color: var(--card-bg);
+  border-radius: var(--radius);
+  box-shadow: 0 8px 16px var(--shadow);
+  text-align: center;
+}
+
+.completion-message h2 {
+  font-size: 2rem;
+  color: var(--success);
+  margin-bottom: 1rem;
+}
+
+.completion-message p {
+  font-size: 1.2rem;
+  margin-bottom: 0.5rem;
+}
+
+.completion-animation {
+  font-size: 4rem;
+  margin: 1.5rem 0;
+  animation: bounce 1s infinite alternate;
+}
+
+#completion-summary {
+  background-color: var(--background);
+  border-radius: var(--radius);
+  padding: 1rem;
+  margin: 1.5rem 0;
+  text-align: left;
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+.completion-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+.completion-buttons .button {
+  width: 100%;
+}
+
+/* Instruções */
+.instructions {
+  max-width: 800px;
+  margin: 2rem auto;
+  padding: 1.5rem;
+  background-color: var(--card-bg);
+  border-radius: var(--radius);
+  box-shadow: 0 4px 8px var(--shadow);
+}
+
+.instructions h3 {
+  font-size: 1.4rem;
+  color: var(--primary);
+  margin-bottom: 1rem;
+}
+
+.instructions p {
+  margin-bottom: 0.8rem;
+}
+
+.instructions strong {
+  color: var(--primary);
+}
+
+/* Animações */
+@keyframes bounce {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(-20px);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.fade-in {
+  animation: fadeIn 0.5s;
+}
+
+/* Responsividade */
+@media (min-width: 768px) {
+  .story-content {
+    flex-direction: row;
+  }
+  
+  .story-scene {
+    width: 50%;
+  }
+  
+  .story-text {
+    width: 50%;
+  }
+  
+  .completion-buttons {
+    flex-direction: row;
+    justify-content: center;
+  }
+  
+  .completion-buttons .button {
+    width: auto;
+  }
+}
+
+@media (max-width: 767px) {
+  .story-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  
+  .story-progress {
+    width: 100%;
+    justify-content: space-between;
+  }
+  
+  .scene-image {
+    height: 200px;
+  }
+}

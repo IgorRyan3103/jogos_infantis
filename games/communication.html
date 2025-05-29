@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jogo de Comunicação Alternativa (PECS)</title>
+    <link rel="stylesheet" href="../styles/main.css">
+    <link rel="stylesheet" href="../styles/communication.css">
+    <style>
+        .visually-hidden {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            margin: -1px;
+            padding: 0;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            border: 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container game-container communication-game">
+        <header class="game-header">
+            <a href="../index.html" class="back-button" aria-label="Voltar ao menu principal">⬅️ Voltar</a>
+            <h1>Jogo de Comunicação Alternativa (PECS)</h1>
+            <div class="sound-control">
+                <button id="sound-toggle" class="sound-button sound-on" aria-label="Ativar ou desativar sons">
+                    <span class="sound-icon">🔊</span>
+                </button>
+            </div>
+        </header>
+
+        <main id="game-area">
+            <section class="mode-selection">
+                <h2>Escolha um modo:</h2>
+                <button id="mode-learn" class="mode-button">Aprender Símbolos</button>
+                <button id="mode-build" class="mode-button">Construir Frases</button>
+                <button id="mode-practice" class="mode-button">Praticar Comunicação</button>
+            </section>
+
+            <section id="learn-mode" class="game-mode hidden">
+                <h2>Modo Aprendizado</h2>
+                <div class="category-selector"></div>
+                <div class="symbol-grid"></div>
+            </section>
+
+            <section id="build-mode" class="game-mode hidden">
+                <h2>Modo Construção de Frases</h2>
+                <div class="category-selector"></div>
+                <div class="symbol-grid"></div>
+                <div class="sentence-area">
+                    <div class="sentence-slots"></div>
+                    <button id="read-sentence">Ler Frase</button>
+                    <button id="clear-sentence">Limpar</button>
+                </div>
+            </section>
+
+            <section id="practice-mode" class="game-mode hidden">
+                <h2>Modo Prática</h2>
+                <div class="scenario-display"></div>
+                <div class="symbol-grid"></div>
+                <div class="feedback-area"></div>
+            </section>
+        </main>
+
+        <footer class="game-footer">
+            <p>Use os símbolos para se comunicar!</p>
+        </footer>
+    </div>
+
+    <!-- Elementos de áudio -->
+    <audio id="click-sound" preload="auto">
+        <source src="../assets/sounds/click.mp3" type="audio/mpeg">
+    </audio>
+    <!-- Áudios específicos do PECS serão carregados dinamicamente -->
+
+    <!-- Elemento para anúncios de leitor de tela -->
+    <div id="screen-reader-announcer" class="visually-hidden" aria-live="polite"></div>
+
+    <script src="../scripts/main.js"></script>
+    <script src="../scripts/communication.js"></script>
+</body>
+</html>

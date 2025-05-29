@@ -1,0 +1,452 @@
+/* Estilos específicos para o Labirinto Simples */
+
+.selection-screen {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 1rem;
+}
+
+.selection-screen h2 {
+  font-size: 1.8rem;
+  text-align: center;
+  margin-bottom: 1.5rem;
+  color: var(--primary);
+}
+
+/* Botões de tema */
+.theme-buttons {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.theme-button {
+  background-color: var(--card-bg);
+  border: none;
+  border-radius: var(--radius);
+  padding: 1.5rem;
+  text-align: center;
+  cursor: pointer;
+  transition: transform var(--transition), box-shadow var(--transition);
+  box-shadow: 0 4px 8px var(--shadow);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.theme-button:hover, .theme-button:focus {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px var(--shadow);
+  outline: none;
+}
+
+.theme-icon {
+  width: 80px;
+  height: 80px;
+  margin-bottom: 1rem;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.forest-icon {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%232ECC71'%3E%3Cpath d='M12 3.5L6 9.5H9V16.5H15V9.5H18L12 3.5ZM12 18.5C11.45 18.5 11 18.95 11 19.5S11.45 20.5 12 20.5 13 20.05 13 19.5 12.55 18.5 12 18.5Z'/%3E%3C/svg%3E");
+}
+
+.ocean-icon {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%233498DB'%3E%3Cpath d='M22 18.5H2V20.5H22V18.5ZM19 9.5L17.5 6.5H14.5L13 9.5H9.5L8 6.5H5L3.5 9.5H2V11.5H22V9.5H19ZM18.5 13.5H17V16.5H15V13.5H13V16.5H11V13.5H9V16.5H7V13.5H5.5V16.5H3.5V13.5H2V16.5H1V18.5H23V16.5H22V13.5H20.5V16.5H18.5V13.5Z'/%3E%3C/svg%3E");
+}
+
+.space-icon {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%239B59B6'%3E%3Cpath d='M12 15.5C13.66 15.5 15 14.16 15 12.5C15 10.84 13.66 9.5 12 9.5C10.34 9.5 9 10.84 9 12.5C9 14.16 10.34 15.5 12 15.5ZM12 7.5C14.76 7.5 17 9.74 17 12.5C17 15.26 14.76 17.5 12 17.5C9.24 17.5 7 15.26 7 12.5C7 9.74 9.24 7.5 12 7.5ZM12 2L14.39 5.42C13.65 5.15 12.84 5 12 5C11.16 5 10.35 5.15 9.61 5.42L12 2ZM12 22.5L9.61 19.08C10.35 19.35 11.16 19.5 12 19.5C12.84 19.5 13.65 19.35 14.39 19.08L12 22.5ZM21.5 12L18.08 9.61C18.35 10.35 18.5 11.16 18.5 12C18.5 12.84 18.35 13.65 18.08 14.39L21.5 12ZM2.5 12L5.92 14.39C5.65 13.65 5.5 12.84 5.5 12C5.5 11.16 5.65 10.35 5.92 9.61L2.5 12Z'/%3E%3C/svg%3E");
+}
+
+.theme-name {
+  font-size: 1.4rem;
+  margin-bottom: 0.5rem;
+  color: var(--primary);
+}
+
+.theme-description {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+}
+
+/* Botões de nível */
+.level-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.level-button {
+  background-color: var(--card-bg);
+  border: none;
+  border-radius: var(--radius);
+  padding: 1rem;
+  text-align: center;
+  cursor: pointer;
+  transition: transform var(--transition), box-shadow var(--transition);
+  box-shadow: 0 4px 8px var(--shadow);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.level-button:hover, .level-button:focus {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px var(--shadow);
+  outline: none;
+}
+
+.level-number {
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: var(--primary);
+  margin-bottom: 0.5rem;
+}
+
+.level-preview {
+  width: 80px;
+  height: 80px;
+  background-color: var(--primary-light);
+  border-radius: var(--radius);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 2rem;
+}
+
+/* Tela de jogo */
+.game-screen {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 1rem;
+}
+
+.game-status {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.status-message {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: var(--primary-dark);
+  flex: 1;
+}
+
+.moves-counter {
+  background-color: var(--primary-light);
+  padding: 0.5rem 1rem;
+  border-radius: var(--radius);
+  font-weight: bold;
+  color: var(--primary-dark);
+}
+
+.maze-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.maze-board {
+  background-color: var(--card-bg);
+  border-radius: var(--radius);
+  padding: 1rem;
+  box-shadow: 0 4px 8px var(--shadow);
+  display: grid;
+  gap: 2px;
+  margin: 0 auto;
+  max-width: 100%;
+  overflow: auto;
+}
+
+.maze-cell {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.5rem;
+  transition: background-color 0.2s;
+}
+
+.maze-wall {
+  background-color: var(--primary-dark);
+  border-radius: 4px;
+}
+
+.maze-path {
+  background-color: var(--background);
+}
+
+.maze-start {
+  background-color: var(--primary-light);
+}
+
+.maze-end {
+  background-color: var(--success-light);
+}
+
+.maze-player {
+  width: 80%;
+  height: 80%;
+  border-radius: 50%;
+  background-color: var(--primary);
+  position: relative;
+  z-index: 2;
+}
+
+.maze-hint {
+  background-color: rgba(52, 152, 219, 0.3);
+}
+
+.maze-controls {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 1rem;
+}
+
+.control-row {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.control-button {
+  width: 60px;
+  height: 60px;
+  background-color: var(--primary-light);
+  border: none;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.5rem;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.control-button:hover, .control-button:focus {
+  background-color: var(--primary);
+  color: white;
+  outline: none;
+}
+
+.control-button:active {
+  transform: scale(0.95);
+}
+
+.game-controls {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+  flex-wrap: wrap;
+}
+
+/* Tela de conclusão */
+.completion-screen {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 2rem;
+  background-color: var(--card-bg);
+  border-radius: var(--radius);
+  box-shadow: 0 8px 16px var(--shadow);
+  text-align: center;
+}
+
+.completion-message h2 {
+  font-size: 2rem;
+  color: var(--success);
+  margin-bottom: 1rem;
+}
+
+.completion-message p {
+  font-size: 1.2rem;
+  margin-bottom: 0.5rem;
+}
+
+.completion-animation {
+  font-size: 4rem;
+  margin: 1.5rem 0;
+  animation: bounce 1s infinite alternate;
+}
+
+.completion-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+.completion-buttons .button {
+  width: 100%;
+}
+
+/* Instruções */
+.instructions {
+  max-width: 800px;
+  margin: 2rem auto;
+  padding: 1.5rem;
+  background-color: var(--card-bg);
+  border-radius: var(--radius);
+  box-shadow: 0 4px 8px var(--shadow);
+}
+
+.instructions h3 {
+  font-size: 1.4rem;
+  color: var(--primary);
+  margin-bottom: 1rem;
+}
+
+.instructions p {
+  margin-bottom: 0.8rem;
+}
+
+.keyboard-instruction {
+  background-color: var(--primary-light);
+  padding: 1rem;
+  border-radius: var(--radius);
+  margin-top: 1rem;
+}
+
+.keyboard-instruction p {
+  margin-bottom: 0.5rem;
+}
+
+.keyboard-instruction kbd {
+  background-color: var(--card-bg);
+  border: 1px solid var(--text-secondary);
+  border-radius: 3px;
+  padding: 0.1rem 0.4rem;
+  font-family: monospace;
+}
+
+/* Animações */
+@keyframes bounce {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(-20px);
+  }
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.pulse {
+  animation: pulse 0.5s;
+}
+
+/* Responsividade */
+@media (min-width: 768px) {
+  .completion-buttons {
+    flex-direction: row;
+    justify-content: center;
+  }
+  
+  .completion-buttons .button {
+    width: auto;
+  }
+}
+
+@media (max-width: 767px) {
+  .game-status {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  
+  .maze-cell {
+    width: 30px;
+    height: 30px;
+  }
+  
+  .control-button {
+    width: 50px;
+    height: 50px;
+  }
+}
+
+/* Temas específicos */
+.forest-theme .maze-wall {
+  background-color: #2E7D32;
+}
+
+.forest-theme .maze-path {
+  background-color: #C8E6C9;
+}
+
+.forest-theme .maze-player {
+  background-color: #FF9800;
+}
+
+.forest-theme .maze-start {
+  background-color: #A5D6A7;
+}
+
+.forest-theme .maze-end {
+  background-color: #81C784;
+}
+
+.ocean-theme .maze-wall {
+  background-color: #0277BD;
+}
+
+.ocean-theme .maze-path {
+  background-color: #B3E5FC;
+}
+
+.ocean-theme .maze-player {
+  background-color: #FF5722;
+}
+
+.ocean-theme .maze-start {
+  background-color: #81D4FA;
+}
+
+.ocean-theme .maze-end {
+  background-color: #4FC3F7;
+}
+
+.space-theme .maze-wall {
+  background-color: #4A148C;
+}
+
+.space-theme .maze-path {
+  background-color: #D1C4E9;
+}
+
+.space-theme .maze-player {
+  background-color: #FFC107;
+}
+
+.space-theme .maze-start {
+  background-color: #B39DDB;
+}
+
+.space-theme .maze-end {
+  background-color: #9575CD;
+}

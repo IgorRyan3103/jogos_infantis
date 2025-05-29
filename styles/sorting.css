@@ -1,0 +1,428 @@
+/* Estilos específicos para o Jogo de Ordenar */
+
+.game-header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.game-header h1 {
+  font-size: 2.2rem;
+  color: var(--primary);
+  margin-top: 0.5rem;
+}
+
+.back-icon {
+  font-size: 1.2rem;
+  margin-right: 0.5rem;
+}
+
+/* Seleção de categoria */
+.category-selection {
+  max-width: 800px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.category-selection h2 {
+  font-size: 1.8rem;
+  margin-bottom: 1.5rem;
+  color: var(--text-primary);
+}
+
+.category-selection h3 {
+  font-size: 1.4rem;
+  margin-bottom: 1rem;
+  color: var(--text-primary);
+}
+
+.category-buttons {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.category-button {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1.2rem;
+  background-color: var(--card-bg);
+  transition: transform var(--transition), box-shadow var(--transition);
+}
+
+.category-button:hover, .category-button:focus {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 15px var(--shadow);
+}
+
+.category-button.selected {
+  background-color: var(--primary-light);
+  border: 2px solid var(--primary);
+}
+
+.category-icon {
+  width: 60px;
+  height: 60px;
+  margin-bottom: 0.8rem;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.size-icon {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%233498DB'%3E%3Cpath d='M3 6h18v2H3V6m0 5h12v2H3v-2m0 5h18v2H3v-2z'/%3E%3C/svg%3E");
+}
+
+.color-icon {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%233498DB'%3E%3Cpath d='M12 22C6.477 22 2 17.523 2 12S6.477 2 12 2s10 4.477 10 10-4.477 10-10 10zm0-2a8 8 0 1 0 0-16 8 8 0 0 0 0 16zm0-3a5 5 0 1 1 0-10 5 5 0 0 1 0 10z'/%3E%3C/svg%3E");
+}
+
+.number-icon {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%233498DB'%3E%3Cpath d='M4 17V9H2V7h4v10H4m18-2a2 2 0 0 1-2 2h-4v-2h4v-2h-2v-2h2V9h-4V7h4a2 2 0 0 1 2 2v1.5a1.5 1.5 0 0 1-1.5 1.5 1.5 1.5 0 0 1 1.5 1.5V15m-8 0v2H8v-4a2 2 0 0 1 2-2h2V9H8V7h4a2 2 0 0 1 2 2v2a2 2 0 0 1-2 2h-2v2h4z'/%3E%3C/svg%3E");
+}
+
+.shape-icon {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%233498DB'%3E%3Cpath d='M11 13.5v8H3v-8h8m-10 0v8a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2v-8a2 2 0 0 0-2-2H3a2 2 0 0 0-2 2m20-2a2 2 0 0 1 2 2v4a2 2 0 0 1-2 2h-4a2 2 0 0 1-2-2v-4a2 2 0 0 1 2-2h4M5 3h8a2 2 0 0 1 2 2v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2z'/%3E%3C/svg%3E");
+}
+
+.category-name {
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+/* Nível */
+.level-selection {
+  margin-bottom: 2rem;
+}
+
+.level-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.level-buttons .button {
+  display: flex;
+  flex-direction: column;
+  padding: 1.2rem;
+  font-size: 1.5rem;
+}
+
+.level-description {
+  font-size: 1rem;
+  font-weight: normal;
+  margin-top: 0.5rem;
+  opacity: 0.8;
+}
+
+/* Instruções */
+.instructions {
+  background-color: var(--card-bg);
+  border-radius: var(--radius);
+  padding: 1.5rem;
+  margin-bottom: 2rem;
+  box-shadow: 0 2px 4px var(--shadow);
+}
+
+.instructions h3 {
+  font-size: 1.4rem;
+  margin-bottom: 1rem;
+  color: var(--primary);
+}
+
+.instructions p {
+  margin-bottom: 0.8rem;
+  font-size: 1.1rem;
+  text-align: left;
+}
+
+.start-button {
+  padding: 1rem 2rem;
+  font-size: 1.5rem;
+  background-color: var(--primary);
+}
+
+.start-button:disabled {
+  background-color: var(--text-secondary);
+  cursor: not-allowed;
+  opacity: 0.7;
+}
+
+/* Área do jogo */
+.game-board {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.status-message {
+  font-size: 1.3rem;
+  font-weight: bold;
+  color: var(--primary-dark);
+  text-align: center;
+  min-height: 2rem;
+  margin-bottom: 1.5rem;
+}
+
+/* Container de ordenação */
+.sorting-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+  padding: 1.5rem;
+  background-color: var(--card-bg);
+  border-radius: var(--radius);
+  box-shadow: 0 4px 8px var(--shadow);
+}
+
+/* Itens para ordenar */
+.sorting-items {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+  min-height: 100px;
+}
+
+.sorting-item {
+  cursor: grab;
+  border: 2px solid var(--primary-dark);
+  border-radius: var(--radius);
+  padding: 0.5rem;
+  background-color: white;
+  transition: transform var(--transition), box-shadow var(--transition);
+  user-select: none;
+  touch-action: none; /* Importante para drag em dispositivos touch */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.sorting-item:hover, .sorting-item:focus {
+  transform: scale(1.05);
+  box-shadow: 0 4px 8px var(--shadow);
+  outline: none;
+  z-index: 10;
+}
+
+.sorting-item:active {
+  cursor: grabbing;
+}
+
+.sorting-item.dragging {
+  opacity: 0.8;
+  z-index: 100;
+}
+
+.sorting-item.correct {
+  border-color: var(--success);
+  background-color: rgba(88, 214, 141, 0.2);
+}
+
+.sorting-item.incorrect {
+  border-color: #E74C3C;
+  background-color: rgba(231, 76, 60, 0.2);
+}
+
+.sorting-item.hint {
+  animation: pulse 1s infinite;
+  border-color: var(--warning);
+  background-color: rgba(241, 196, 15, 0.2);
+}
+
+/* Estilos específicos para cada categoria */
+.sorting-item.size {
+  width: auto;
+  height: auto;
+}
+
+.sorting-item.color {
+  width: 60px;
+  height: 60px;
+}
+
+.sorting-item.number {
+  width: 60px;
+  height: 60px;
+  font-size: 1.8rem;
+  font-weight: bold;
+}
+
+.sorting-item.shape {
+  width: 70px;
+  height: 70px;
+  padding: 0.8rem;
+}
+
+/* Área de destino */
+.sorting-target {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+  min-height: 100px;
+  padding: 1rem;
+  background-color: var(--background);
+  border-radius: var(--radius);
+  border: 2px dashed var(--text-secondary);
+}
+
+.target-slot {
+  width: 70px;
+  height: 70px;
+  border: 2px dashed var(--primary-light);
+  border-radius: var(--radius);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color var(--transition);
+}
+
+.target-slot.highlight {
+  background-color: var(--primary-light);
+}
+
+.target-slot.filled {
+  border-style: solid;
+}
+
+/* Controles do jogo */
+.game-controls {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.check-button {
+  background-color: var(--success);
+}
+
+.check-button:hover, .check-button:focus {
+  background-color: #27AE60;
+}
+
+/* Tela de conclusão */
+.completion-screen {
+  max-width: 600px;
+  margin: 0 auto;
+  text-align: center;
+  padding: 2rem;
+  background-color: var(--card-bg);
+  border-radius: var(--radius);
+  box-shadow: 0 4px 8px var(--shadow);
+}
+
+.completion-screen h2 {
+  font-size: 2.5rem;
+  color: var(--success);
+  margin-bottom: 1rem;
+}
+
+.completion-screen p {
+  font-size: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.completion-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  max-width: 300px;
+  margin: 0 auto;
+}
+
+/* Animações */
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+  100% { transform: scale(1); }
+}
+
+.pulse {
+  animation: pulse 0.5s;
+}
+
+/* Responsividade */
+@media (min-width: 769px) {
+  .category-buttons {
+    grid-template-columns: repeat(4, 1fr);
+  }
+  
+  .level-buttons {
+    flex-direction: row;
+    justify-content: center;
+  }
+  
+  .level-buttons .button {
+    flex: 1;
+    max-width: 200px;
+  }
+  
+  .completion-buttons {
+    flex-direction: row;
+    max-width: 100%;
+    justify-content: center;
+  }
+  
+  .sorting-container {
+    flex-direction: row;
+  }
+  
+  .sorting-items {
+    width: 40%;
+    min-height: 300px;
+    flex-direction: column;
+  }
+  
+  .sorting-target {
+    width: 60%;
+  }
+}
+
+@media (max-width: 768px) {
+  .category-buttons {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .game-controls {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+  
+  .game-controls .button {
+    flex: 1;
+    min-width: 120px;
+  }
+}
+
+@media (max-width: 480px) {
+  .game-header h1 {
+    font-size: 1.8rem;
+  }
+  
+  .category-buttons {
+    grid-template-columns: 1fr;
+  }
+  
+  .category-icon {
+    width: 50px;
+    height: 50px;
+  }
+  
+  .sorting-item {
+    transform: scale(0.9);
+  }
+  
+  .game-controls {
+    gap: 0.5rem;
+  }
+  
+  .game-controls .button {
+    font-size: 0.9rem;
+    padding: 0.6rem;
+  }
+}

@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jogo de Associação - Jogos para Crianças Autistas</title>
+    <link rel="stylesheet" href="../styles/main.css">
+    <link rel="stylesheet" href="../styles/association.css">
+    <style>
+        .visually-hidden {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            margin: -1px;
+            padding: 0;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            border: 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="game-header">
+            <button id="back-button" class="button button-back" aria-label="Voltar para o menu principal">
+                <span class="back-icon">←</span> Voltar
+            </button>
+            <h1>Jogo de Associação</h1>
+            <div class="sound-control">
+                <button id="sound-toggle" class="sound-button sound-on" aria-label="Ativar ou desativar sons">
+                    <span class="sound-icon">🔊</span>
+                </button>
+            </div>
+        </header>
+        
+        <main>
+            <!-- Tela de seleção de categoria -->
+            <section id="category-selection" class="selection-screen">
+                <h2>Escolha uma categoria</h2>
+                <div class="category-buttons">
+                    <button class="category-button" data-category="objects" aria-label="Objetos Relacionados">
+                        <div class="category-icon objects-icon"></div>
+                        <h3 class="category-name">Objetos Relacionados</h3>
+                        <p class="category-description">Associe objetos que combinam entre si</p>
+                    </button>
+                    
+                    <button class="category-button" data-category="shapes" aria-label="Formas e Cores">
+                        <div class="category-icon shapes-icon"></div>
+                        <h3 class="category-name">Formas e Cores</h3>
+                        <p class="category-description">Associe formas e cores semelhantes</p>
+                    </button>
+                    
+                    <button class="category-button" data-category="cause" aria-label="Causa e Efeito">
+                        <div class="category-icon cause-icon"></div>
+                        <h3 class="category-name">Causa e Efeito</h3>
+                        <p class="category-description">Associe causas com seus efeitos</p>
+                    </button>
+                </div>
+            </section>
+            
+            <!-- Tela de seleção de nível -->
+            <section id="level-selection" class="selection-screen hidden">
+                <h2>Escolha um nível</h2>
+                <div class="level-buttons">
+                    <button class="level-button button button-easy" data-level="easy" aria-label="Nível Fácil">
+                        <span class="level-icon">😊</span>
+                        <span class="level-name">Fácil</span>
+                    </button>
+                    
+                    <button class="level-button button button-medium" data-level="medium" aria-label="Nível Médio">
+                        <span class="level-icon">😃</span>
+                        <span class="level-name">Médio</span>
+                    </button>
+                    
+                    <button class="level-button button button-hard" data-level="hard" aria-label="Nível Difícil">
+                        <span class="level-icon">😎</span>
+                        <span class="level-name">Difícil</span>
+                    </button>
+                </div>
+                <button id="back-to-category" class="button button-back" aria-label="Voltar para seleção de categoria">
+                    <span class="back-icon">←</span> Voltar para categorias
+                </button>
+            </section>
+            
+            <!-- Tela de jogo -->
+            <section id="game-screen" class="game-screen hidden">
+                <div class="game-status">
+                    <div class="status-message" id="status-message">Arraste os itens para fazer as associações corretas</div>
+                    <div class="match-counter">Associações: <span id="match-count">0</span>/<span id="total-matches">0</span></div>
+                </div>
+                
+                <div class="game-board">
+                    <div class="source-container" id="source-container">
+                        <!-- Itens de origem serão adicionados dinamicamente -->
+                    </div>
+                    
+                    <div class="target-container" id="target-container">
+                        <!-- Áreas de destino serão adicionadas dinamicamente -->
+                    </div>
+                </div>
+                
+                <div class="game-controls">
+                    <button id="hint-button" class="button" aria-label="Mostrar dica">
+                        <span class="hint-icon">💡</span> Dica
+                    </button>
+                    <button id="restart-button" class="button" aria-label="Reiniciar nível">
+                        <span class="restart-icon">🔄</span> Reiniciar
+                    </button>
+                    <button id="back-to-level" class="button button-back" aria-label="Voltar para seleção de nível">
+                        <span class="back-icon">←</span> Voltar
+                    </button>
+                </div>
+            </section>
+            
+            <!-- Tela de conclusão -->
+            <section id="completion-screen" class="completion-screen hidden">
+                <div class="completion-message">
+                    <h2>Parabéns!</h2>
+                    <p>Você completou todas as associações corretamente!</p>
+                    <div class="completion-animation">🎉</div>
+                </div>
+                
+                <div class="completion-buttons">
+                    <button id="next-level-button" class="button" aria-label="Próximo nível">
+                        Próximo Nível <span class="next-icon">→</span>
+                    </button>
+                    <button id="replay-level-button" class="button" aria-label="Jogar novamente">
+                        <span class="replay-icon">🔄</span> Jogar Novamente
+                    </button>
+                    <button id="back-to-levels-button" class="button button-back" aria-label="Voltar para seleção de nível">
+                        <span class="back-icon">←</span> Escolher Outro Nível
+                    </button>
+                </div>
+            </section>
+            
+            <!-- Instruções -->
+            <section id="instructions" class="instructions">
+                <h3>Como Jogar</h3>
+                <p>Arraste cada item da esquerda para a área correspondente à direita.</p>
+                <p>Faça todas as associações corretas para completar o nível.</p>
+                <p>Use o botão de dica se precisar de ajuda.</p>
+            </section>
+        </main>
+        
+        <footer class="footer">
+            <p>Desenvolvido especialmente para crianças do espectro autista</p>
+        </footer>
+    </div>
+    
+    <!-- Elementos de áudio -->
+    <audio id="success-sound" preload="auto">
+        <source src="../assets/sounds/success.mp3" type="audio/mpeg">
+    </audio>
+    <audio id="match-sound" preload="auto">
+        <source src="../assets/sounds/match.mp3" type="audio/mpeg">
+    </audio>
+    <audio id="error-sound" preload="auto">
+        <source src="../assets/sounds/error.mp3" type="audio/mpeg">
+    </audio>
+    <audio id="hint-sound" preload="auto">
+        <source src="../assets/sounds/hint.mp3" type="audio/mpeg">
+    </audio>
+    <audio id="completion-sound" preload="auto">
+        <source src="../assets/sounds/completion.mp3" type="audio/mpeg">
+    </audio>
+    
+    <!-- Elemento para anúncios de leitor de tela -->
+    <div id="screen-reader-announcer" class="visually-hidden" aria-live="polite"></div>
+    
+    <script src="../scripts/main.js"></script>
+    <script src="../scripts/association.js"></script>
+</body>
+</html>

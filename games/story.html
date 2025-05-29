@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>História Interativa - Jogos para Crianças Autistas</title>
+    <link rel="stylesheet" href="../styles/main.css">
+    <link rel="stylesheet" href="../styles/story.css">
+    <style>
+        .visually-hidden {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            margin: -1px;
+            padding: 0;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            border: 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="game-header">
+            <button id="back-button" class="button button-back" aria-label="Voltar para o menu principal">
+                <span class="back-icon">←</span> Voltar
+            </button>
+            <h1>História Interativa</h1>
+            <div class="sound-control">
+                <button id="sound-toggle" class="sound-button sound-on" aria-label="Ativar ou desativar sons">
+                    <span class="sound-icon">🔊</span>
+                </button>
+            </div>
+        </header>
+        
+        <main>
+            <!-- Tela de seleção de história -->
+            <section id="story-selection" class="selection-screen">
+                <h2>Escolha uma história</h2>
+                <div class="story-buttons">
+                    <button class="story-button" data-story="school" aria-label="História: Um Dia na Escola">
+                        <div class="story-icon school-icon">🏫</div>
+                        <h3 class="story-name">Um Dia na Escola</h3>
+                        <p class="story-description">Ajude Miguel a fazer amigos e lidar com situações na escola</p>
+                    </button>
+                    
+                    <button class="story-button" data-story="park" aria-label="História: Aventura no Parque">
+                        <div class="story-icon park-icon">🌳</div>
+                        <h3 class="story-name">Aventura no Parque</h3>
+                        <p class="story-description">Explore o parque com Ana e aprenda sobre compartilhar e esperar sua vez</p>
+                    </button>
+                    
+                    <button class="story-button" data-story="birthday" aria-label="História: Festa de Aniversário">
+                        <div class="story-icon birthday-icon">🎂</div>
+                        <h3 class="story-name">Festa de Aniversário</h3>
+                        <p class="story-description">Participe da festa de Lucas e aprenda sobre emoções e interações sociais</p>
+                    </button>
+                </div>
+            </section>
+            
+            <!-- Tela da história -->
+            <section id="story-screen" class="story-screen hidden">
+                <div class="story-container">
+                    <div class="story-header">
+                        <h2 id="story-title">Título da História</h2>
+                        <div class="story-progress">
+                            <div class="progress-bar">
+                                <div id="progress-fill" class="progress-fill"></div>
+                            </div>
+                            <div class="progress-text">
+                                <span id="current-page">1</span>/<span id="total-pages">10</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="story-content">
+                        <div class="story-scene">
+                            <div id="scene-image" class="scene-image" role="img" aria-label="Descrição da cena"></div>
+                        </div>
+                        
+                        <div class="story-text">
+                            <p id="scene-text" aria-live="polite">Texto da história aparecerá aqui...</p>
+                            <div id="character-emotion" class="character-emotion hidden">
+                                <div class="emotion-icon"></div>
+                                <p class="emotion-text"></p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div id="story-choices" class="story-choices">
+                        <!-- Escolhas serão geradas dinamicamente aqui -->
+                    </div>
+                    
+                    <div class="story-controls">
+                        <button id="story-hint-button" class="button" aria-label="Mostrar dica">
+                            <span class="hint-icon">💡</span> Dica
+                        </button>
+                        <button id="story-continue-button" class="button button-primary hidden" aria-label="Continuar história">
+                            Continuar <span class="next-icon">→</span>
+                        </button>
+                        <button id="back-to-stories" class="button button-back" aria-label="Voltar para seleção de histórias">
+                            <span class="back-icon">←</span> Voltar
+                        </button>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- Tela de conclusão -->
+            <section id="story-completion" class="completion-screen hidden">
+                <div class="completion-message">
+                    <h2>Parabéns!</h2>
+                    <p>Você completou a história!</p>
+                    <div class="completion-animation">🎉</div>
+                    <p id="completion-summary">Resumo da história aparecerá aqui...</p>
+                </div>
+                
+                <div class="completion-buttons">
+                    <button id="restart-story-button" class="button" aria-label="Ler novamente">
+                        <span class="replay-icon">🔄</span> Ler Novamente
+                    </button>
+                    <button id="different-ending-button" class="button" aria-label="Tentar um final diferente">
+                        Tentar Final Diferente <span class="next-icon">→</span>
+                    </button>
+                    <button id="back-to-stories-button" class="button button-back" aria-label="Escolher outra história">
+                        <span class="back-icon">←</span> Escolher Outra História
+                    </button>
+                </div>
+            </section>
+            
+            <!-- Instruções -->
+            <section id="instructions" class="instructions">
+                <h3>Como Jogar</h3>
+                <p><strong>História Interativa</strong> permite que você faça escolhas que afetam o desenvolvimento da história.</p>
+                <p>Leia o texto, observe as imagens e as emoções dos personagens, e escolha o que fazer em seguida.</p>
+                <p>Suas escolhas afetarão o que acontece na história e como os personagens se sentem.</p>
+                <p>Use o botão de dica se precisar de ajuda para entender as emoções ou situações sociais.</p>
+            </section>
+        </main>
+        
+        <footer class="footer">
+            <p>Desenvolvido especialmente para crianças do espectro autista</p>
+        </footer>
+    </div>
+    
+    <!-- Elementos de áudio -->
+    <audio id="success-sound" preload="auto">
+        <source src="../assets/sounds/success.mp3" type="audio/mpeg">
+    </audio>
+    <audio id="error-sound" preload="auto">
+        <source src="../assets/sounds/error.mp3" type="audio/mpeg">
+    </audio>
+    <audio id="hint-sound" preload="auto">
+        <source src="../assets/sounds/hint.mp3" type="audio/mpeg">
+    </audio>
+    <audio id="completion-sound" preload="auto">
+        <source src="../assets/sounds/completion.mp3" type="audio/mpeg">
+    </audio>
+    <audio id="click-sound" preload="auto">
+        <source src="../assets/sounds/click.mp3" type="audio/mpeg">
+    </audio>
+    <audio id="page-turn-sound" preload="auto">
+        <source src="../assets/sounds/page-turn.mp3" type="audio/mpeg">
+    </audio>
+    
+    <!-- Elemento para anúncios de leitor de tela -->
+    <div id="screen-reader-announcer" class="visually-hidden" aria-live="polite"></div>
+    
+    <script src="../scripts/main.js"></script>
+    <script src="../scripts/story.js"></script>
+</body>
+</html>

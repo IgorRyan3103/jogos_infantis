@@ -1,0 +1,205 @@
+/* Estilos específicos para o Jogo de Comunicação Alternativa (PECS) */
+
+.communication-game .game-mode {
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    margin-top: 20px;
+    background-color: #f9f9f9;
+}
+
+.communication-game .hidden {
+    display: none;
+}
+
+.communication-game .mode-selection {
+    text-align: center;
+    padding: 30px 0;
+}
+
+.communication-game .mode-button {
+    padding: 15px 30px;
+    font-size: 1.2em;
+    margin: 10px;
+    cursor: pointer;
+    border: none;
+    border-radius: 8px;
+    background-color: var(--primary-color);
+    color: white;
+    transition: background-color 0.3s ease;
+}
+
+.communication-game .mode-button:hover,
+.communication-game .mode-button:focus {
+    background-color: var(--secondary-color);
+    outline: 2px solid var(--accent-color);
+}
+
+.communication-game .category-selector {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-bottom: 20px;
+    padding: 10px;
+    background-color: #eee;
+    border-radius: 8px;
+}
+
+.communication-game .category-button {
+    padding: 10px 15px;
+    margin: 5px;
+    cursor: pointer;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: white;
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+.communication-game .category-button.active,
+.communication-game .category-button:hover,
+.communication-game .category-button:focus {
+    background-color: var(--accent-color-light);
+    border-color: var(--accent-color);
+    outline: none;
+}
+
+.communication-game .symbol-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.communication-game .symbol-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background-color: white;
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    text-align: center;
+}
+
+.communication-game .symbol-card:hover,
+.communication-game .symbol-card:focus {
+    transform: scale(1.05);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    outline: 2px solid var(--accent-color);
+}
+
+.communication-game .symbol-image {
+    width: 60px;
+    height: 60px;
+    object-fit: contain;
+    margin-bottom: 5px;
+}
+
+.communication-game .symbol-text {
+    font-size: 0.9em;
+}
+
+.communication-game .sentence-area {
+    margin-top: 30px;
+    padding: 20px;
+    border: 1px dashed #ccc;
+    border-radius: 8px;
+    background-color: #f0f0f0;
+    min-height: 100px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.communication-game .sentence-slots {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 20px;
+    min-height: 80px; /* Ensure space for symbols */
+    width: 100%;
+    padding: 10px;
+    background-color: white;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+}
+
+.communication-game .sentence-slot {
+    /* Styles for dropped symbols */
+    border: 1px solid #ddd;
+    padding: 5px;
+    background-color: #fff;
+    border-radius: 5px;
+}
+
+.communication-game .sentence-area button {
+    padding: 10px 20px;
+    font-size: 1em;
+    margin-top: 10px;
+    cursor: pointer;
+    border: none;
+    border-radius: 5px;
+    background-color: var(--secondary-color);
+    color: white;
+    transition: background-color 0.3s ease;
+}
+
+.communication-game .sentence-area button:hover,
+.communication-game .sentence-area button:focus {
+    background-color: var(--primary-color);
+    outline: 2px solid var(--accent-color);
+}
+
+.communication-game .scenario-display {
+    padding: 20px;
+    margin-bottom: 20px;
+    background-color: var(--accent-color-light);
+    border-radius: 8px;
+    text-align: center;
+    font-size: 1.1em;
+}
+
+.communication-game .feedback-area {
+    margin-top: 20px;
+    padding: 15px;
+    border-radius: 8px;
+    text-align: center;
+    font-weight: bold;
+}
+
+.communication-game .feedback-correct {
+    background-color: #d4edda; /* Verde claro */
+    color: #155724;
+    border: 1px solid #c3e6cb;
+}
+
+.communication-game .feedback-incorrect {
+    background-color: #f8d7da; /* Vermelho claro */
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+}
+
+/* Responsividade */
+@media (max-width: 600px) {
+    .communication-game .symbol-grid {
+        grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
+        gap: 10px;
+    }
+
+    .communication-game .symbol-image {
+        width: 50px;
+        height: 50px;
+    }
+
+    .communication-game .mode-button {
+        padding: 12px 25px;
+        font-size: 1.1em;
+    }
+
+    .communication-game .category-button {
+        padding: 8px 12px;
+    }
+}
+

@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sequência de Cores - Jogos para Crianças Autistas</title>
+    <link rel="stylesheet" href="../styles/main.css">
+    <link rel="stylesheet" href="../styles/colors.css">
+</head>
+<body>
+    <div class="container">
+        <header class="game-header">
+            <a href="../index.html" class="button button-back" aria-label="Voltar para o menu principal">
+                <span class="back-icon">←</span> Voltar
+            </a>
+            <h1>Sequência de Cores</h1>
+        </header>
+        
+        <main>
+            <!-- Área de seleção de nível - visível inicialmente -->
+            <div id="level-selection" class="level-selection">
+                <h2>Escolha um nível</h2>
+                <div class="level-buttons">
+                    <button id="easy-button" class="button button-easy" data-level="easy" aria-label="Nível Fácil - 3 cores">
+                        Fácil
+                        <span class="level-description">3 cores na sequência</span>
+                    </button>
+                    <button id="medium-button" class="button button-medium" data-level="medium" aria-label="Nível Médio - 5 cores">
+                        Médio
+                        <span class="level-description">5 cores na sequência</span>
+                    </button>
+                    <button id="hard-button" class="button button-hard" data-level="hard" aria-label="Nível Difícil - 7 cores">
+                        Difícil
+                        <span class="level-description">7 cores na sequência</span>
+                    </button>
+                </div>
+                
+                <div class="instructions">
+                    <h3>Como Jogar</h3>
+                    <p>1. Observe a sequência de cores que será mostrada</p>
+                    <p>2. Depois, repita a sequência clicando nas cores na mesma ordem</p>
+                    <p>3. A cada rodada, a sequência ficará mais longa</p>
+                </div>
+                
+                <button id="start-game-button" class="button start-button">
+                    Iniciar Jogo
+                </button>
+            </div>
+            
+            <!-- Área do jogo - inicialmente oculta -->
+            <div id="game-board" class="game-board hidden">
+                <div class="game-info">
+                    <div class="score-display">
+                        Pontuação: <span id="score">0</span>
+                    </div>
+                    <div class="round-display">
+                        Rodada: <span id="round">1</span>
+                    </div>
+                    <div id="status-message" class="status-message" aria-live="polite">
+                        Observe a sequência!
+                    </div>
+                </div>
+                
+                <div id="color-buttons" class="color-buttons">
+                    <button id="color-red" class="color-button red" data-color="red" aria-label="Vermelho"></button>
+                    <button id="color-blue" class="color-button blue" data-color="blue" aria-label="Azul"></button>
+                    <button id="color-green" class="color-button green" data-color="green" aria-label="Verde"></button>
+                    <button id="color-yellow" class="color-button yellow" data-color="yellow" aria-label="Amarelo"></button>
+                </div>
+                
+                <div class="game-controls">
+                    <button id="restart-button" class="button">Reiniciar</button>
+                    <button id="new-game-button" class="button">Novo Jogo</button>
+                </div>
+            </div>
+            
+            <!-- Área de conclusão - inicialmente oculta -->
+            <div id="game-over-screen" class="game-over-screen hidden">
+                <h2>Fim de Jogo!</h2>
+                <p>Você chegou até a rodada <span id="final-round">0</span></p>
+                <p>Sua pontuação final: <span id="final-score">0</span></p>
+                <div class="completion-buttons">
+                    <button id="play-again-button" class="button button-easy">Jogar Novamente</button>
+                    <button id="choose-level-button" class="button button-medium">Escolher Nível</button>
+                    <a href="../index.html" class="button">Voltar ao Menu</a>
+                </div>
+            </div>
+        </main>
+        
+        <footer class="footer">
+            <p>Desenvolvido especialmente para crianças do espectro autista</p>
+            <div class="sound-control">
+                <label for="sound-toggle">Sons:</label>
+                <button id="sound-toggle" class="sound-button sound-on" aria-label="Ativar ou desativar sons">
+                    <span class="sound-icon">🔊</span>
+                </button>
+            </div>
+        </footer>
+    </div>
+    
+    <!-- Elementos de áudio para feedback sonoro -->
+    <audio id="red-sound" preload="auto">
+        <source src="../assets/sounds/red.mp3" type="audio/mpeg">
+    </audio>
+    <audio id="blue-sound" preload="auto">
+        <source src="../assets/sounds/blue.mp3" type="audio/mpeg">
+    </audio>
+    <audio id="green-sound" preload="auto">
+        <source src="../assets/sounds/green.mp3" type="audio/mpeg">
+    </audio>
+    <audio id="yellow-sound" preload="auto">
+        <source src="../assets/sounds/yellow.mp3" type="audio/mpeg">
+    </audio>
+    <audio id="success-sound" preload="auto">
+        <source src="../assets/sounds/success.mp3" type="audio/mpeg">
+    </audio>
+    <audio id="error-sound" preload="auto">
+        <source src="../assets/sounds/error.mp3" type="audio/mpeg">
+    </audio>
+    
+    <script src="../scripts/main.js"></script>
+    <script src="../scripts/colors.js"></script>
+</body>
+</html>

@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jogo de Contagem - Jogos para Crianças Autistas</title>
+    <link rel="stylesheet" href="../styles/main.css">
+    <link rel="stylesheet" href="../styles/counting.css">
+    <style>
+        .visually-hidden {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            margin: -1px;
+            padding: 0;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            border: 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="game-header">
+            <button id="back-button" class="button button-back" aria-label="Voltar para o menu principal">
+                <span class="back-icon">←</span> Voltar
+            </button>
+            <h1>Jogo de Contagem</h1>
+            <div class="sound-control">
+                <button id="sound-toggle" class="sound-button sound-on" aria-label="Ativar ou desativar sons">
+                    <span class="sound-icon">🔊</span>
+                </button>
+            </div>
+        </header>
+        
+        <main>
+            <!-- Tela de seleção de modo -->
+            <section id="mode-selection" class="selection-screen">
+                <h2>Escolha um modo</h2>
+                <div class="mode-buttons">
+                    <button class="mode-button" data-mode="count" aria-label="Modo Contar">
+                        <div class="mode-icon count-icon">1️⃣2️⃣3️⃣</div>
+                        <h3 class="mode-name">Contar</h3>
+                        <p class="mode-description">Conte quantos objetos aparecem na tela</p>
+                    </button>
+                    
+                    <button class="mode-button" data-mode="match" aria-label="Modo Relacionar">
+                        <div class="mode-icon match-icon">🔢</div>
+                        <h3 class="mode-name">Relacionar</h3>
+                        <p class="mode-description">Relacione números com a quantidade correta</p>
+                    </button>
+                    
+                    <button class="mode-button" data-mode="sequence" aria-label="Modo Sequência">
+                        <div class="mode-icon sequence-icon">📊</div>
+                        <h3 class="mode-name">Sequência</h3>
+                        <p class="mode-description">Complete a sequência de números</p>
+                    </button>
+                </div>
+            </section>
+            
+            <!-- Tela de seleção de nível -->
+            <section id="level-selection" class="selection-screen hidden">
+                <h2>Escolha um nível</h2>
+                <div class="level-grid">
+                    <button class="level-button" data-level="1" aria-label="Nível 1 - Números de 1 a 5">
+                        <span class="level-number">1</span>
+                        <div class="level-preview">1-5</div>
+                    </button>
+                    
+                    <button class="level-button" data-level="2" aria-label="Nível 2 - Números de 1 a 10">
+                        <span class="level-number">2</span>
+                        <div class="level-preview">1-10</div>
+                    </button>
+                    
+                    <button class="level-button" data-level="3" aria-label="Nível 3 - Números de 1 a 20">
+                        <span class="level-number">3</span>
+                        <div class="level-preview">1-20</div>
+                    </button>
+                </div>
+                <button id="back-to-modes" class="button button-back" aria-label="Voltar para seleção de modo">
+                    <span class="back-icon">←</span> Voltar para modos
+                </button>
+            </section>
+            
+            <!-- Tela de jogo - Modo Contar -->
+            <section id="count-screen" class="game-screen hidden">
+                <div class="game-status">
+                    <div class="status-message" id="count-status-message">Conte quantos objetos aparecem na tela</div>
+                    <div class="score-counter">Pontos: <span id="count-score">0</span></div>
+                </div>
+                
+                <div class="count-container">
+                    <div class="count-question">
+                        <h3>Quantos <span id="count-object-name">objetos</span> você vê?</h3>
+                        <div class="count-objects-container" id="count-objects-container">
+                            <!-- Objetos serão gerados dinamicamente aqui -->
+                        </div>
+                    </div>
+                    
+                    <div class="count-answer">
+                        <div class="number-input">
+                            <button class="number-button decrease" id="decrease-button" aria-label="Diminuir número">-</button>
+                            <div class="number-display" id="number-display" aria-live="polite">0</div>
+                            <button class="number-button increase" id="increase-button" aria-label="Aumentar número">+</button>
+                        </div>
+                        <button id="count-submit" class="button button-primary" aria-label="Verificar resposta">Verificar</button>
+                    </div>
+                </div>
+                
+                <div class="game-controls">
+                    <button id="count-hint-button" class="button" aria-label="Mostrar dica">
+                        <span class="hint-icon">💡</span> Dica
+                    </button>
+                    <button id="count-next-button" class="button button-primary hidden" aria-label="Próxima pergunta">
+                        Próxima <span class="next-icon">→</span>
+                    </button>
+                    <button id="back-to-level" class="button button-back" aria-label="Voltar para seleção de nível">
+                        <span class="back-icon">←</span> Voltar
+                    </button>
+                </div>
+            </section>
+            
+            <!-- Tela de jogo - Modo Relacionar -->
+            <section id="match-screen" class="game-screen hidden">
+                <div class="game-status">
+                    <div class="status-message" id="match-status-message">Relacione os números com a quantidade correta</div>
+                    <div class="score-counter">Pontos: <span id="match-score">0</span></div>
+                </div>
+                
+                <div class="match-container">
+                    <div class="match-numbers" id="match-numbers">
+                        <!-- Números serão gerados dinamicamente aqui -->
+                    </div>
+                    
+                    <div class="match-objects" id="match-objects">
+                        <!-- Grupos de objetos serão gerados dinamicamente aqui -->
+                    </div>
+                </div>
+                
+                <div class="game-controls">
+                    <button id="match-hint-button" class="button" aria-label="Mostrar dica">
+                        <span class="hint-icon">💡</span> Dica
+                    </button>
+                    <button id="match-next-button" class="button button-primary hidden" aria-label="Próxima pergunta">
+                        Próxima <span class="next-icon">→</span>
+                    </button>
+                    <button id="back-to-level-from-match" class="button button-back" aria-label="Voltar para seleção de nível">
+                        <span class="back-icon">←</span> Voltar
+                    </button>
+                </div>
+            </section>
+            
+            <!-- Tela de jogo - Modo Sequência -->
+            <section id="sequence-screen" class="game-screen hidden">
+                <div class="game-status">
+                    <div class="status-message" id="sequence-status-message">Complete a sequência de números</div>
+                    <div class="score-counter">Pontos: <span id="sequence-score">0</span></div>
+                </div>
+                
+                <div class="sequence-container">
+                    <div class="sequence-question">
+                        <h3>Qual número completa a sequência?</h3>
+                        <div class="sequence-numbers" id="sequence-numbers">
+                            <!-- Sequência será gerada dinamicamente aqui -->
+                        </div>
+                    </div>
+                    
+                    <div class="sequence-options" id="sequence-options">
+                        <!-- Opções serão geradas dinamicamente aqui -->
+                    </div>
+                </div>
+                
+                <div class="game-controls">
+                    <button id="sequence-hint-button" class="button" aria-label="Mostrar dica">
+                        <span class="hint-icon">💡</span> Dica
+                    </button>
+                    <button id="sequence-next-button" class="button button-primary hidden" aria-label="Próxima pergunta">
+                        Próxima <span class="next-icon">→</span>
+                    </button>
+                    <button id="back-to-level-from-sequence" class="button button-back" aria-label="Voltar para seleção de nível">
+                        <span class="back-icon">←</span> Voltar
+                    </button>
+                </div>
+            </section>
+            
+            <!-- Tela de conclusão -->
+            <section id="completion-screen" class="completion-screen hidden">
+                <div class="completion-message">
+                    <h2>Parabéns!</h2>
+                    <p>Você completou o nível!</p>
+                    <p>Pontuação: <span id="final-score">0</span> de <span id="final-total">0</span></p>
+                    <div class="completion-animation">🎉</div>
+                </div>
+                
+                <div class="completion-buttons">
+                    <button id="next-level-button" class="button" aria-label="Próximo nível">
+                        Próximo Nível <span class="next-icon">→</span>
+                    </button>
+                    <button id="replay-level-button" class="button" aria-label="Jogar novamente">
+                        <span class="replay-icon">🔄</span> Jogar Novamente
+                    </button>
+                    <button id="back-to-levels-button" class="button button-back" aria-label="Voltar para seleção de nível">
+                        <span class="back-icon">←</span> Escolher Outro Nível
+                    </button>
+                </div>
+            </section>
+            
+            <!-- Instruções -->
+            <section id="instructions" class="instructions">
+                <h3>Como Jogar</h3>
+                <div id="count-instructions">
+                    <p><strong>Modo Contar:</strong> Conte quantos objetos aparecem na tela e digite o número correto.</p>
+                    <p>Use os botões + e - para ajustar sua resposta, e clique em "Verificar" quando estiver pronto.</p>
+                </div>
+                <div id="match-instructions">
+                    <p><strong>Modo Relacionar:</strong> Arraste os números até o grupo com a quantidade correta de objetos.</p>
+                    <p>Você pode usar o teclado para navegar e a tecla Enter para selecionar e soltar os números.</p>
+                </div>
+                <div id="sequence-instructions">
+                    <p><strong>Modo Sequência:</strong> Observe a sequência de números e escolha qual número completa a sequência.</p>
+                    <p>Clique na opção que você acha que é a correta.</p>
+                </div>
+                <p>Use o botão de dica se precisar de ajuda.</p>
+            </section>
+        </main>
+        
+        <footer class="footer">
+            <p>Desenvolvido especialmente para crianças do espectro autista</p>
+        </footer>
+    </div>
+    
+    <!-- Elementos de áudio -->
+    <audio id="success-sound" preload="auto">
+        <source src="../assets/sounds/success.mp3" type="audio/mpeg">
+    </audio>
+    <audio id="error-sound" preload="auto">
+        <source src="../assets/sounds/error.mp3" type="audio/mpeg">
+    </audio>
+    <audio id="hint-sound" preload="auto">
+        <source src="../assets/sounds/hint.mp3" type="audio/mpeg">
+    </audio>
+    <audio id="completion-sound" preload="auto">
+        <source src="../assets/sounds/completion.mp3" type="audio/mpeg">
+    </audio>
+    <audio id="click-sound" preload="auto">
+        <source src="../assets/sounds/click.mp3" type="audio/mpeg">
+    </audio>
+    
+    <!-- Elemento para anúncios de leitor de tela -->
+    <div id="screen-reader-announcer" class="visually-hidden" aria-live="polite"></div>
+    
+    <script src="../scripts/main.js"></script>
+    <script src="../scripts/counting.js"></script>
+</body>
+</html>

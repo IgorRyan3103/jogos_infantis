@@ -1,0 +1,572 @@
+/* Estilos específicos para o Jogo de Contagem */
+
+.selection-screen {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 1rem;
+}
+
+.selection-screen h2 {
+  font-size: 1.8rem;
+  text-align: center;
+  margin-bottom: 1.5rem;
+  color: var(--primary);
+}
+
+/* Botões de modo */
+.mode-buttons {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.mode-button {
+  background-color: var(--card-bg);
+  border: none;
+  border-radius: var(--radius);
+  padding: 1.5rem;
+  text-align: center;
+  cursor: pointer;
+  transition: transform var(--transition), box-shadow var(--transition);
+  box-shadow: 0 4px 8px var(--shadow);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.mode-button:hover, .mode-button:focus {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px var(--shadow);
+  outline: none;
+}
+
+.mode-icon {
+  width: 80px;
+  height: 80px;
+  margin-bottom: 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 2.5rem;
+  background-color: var(--primary-light);
+  border-radius: 50%;
+}
+
+.count-icon {
+  font-size: 2rem;
+}
+
+.mode-name {
+  font-size: 1.4rem;
+  margin-bottom: 0.5rem;
+  color: var(--primary);
+}
+
+.mode-description {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+}
+
+/* Botões de nível */
+.level-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.level-button {
+  background-color: var(--card-bg);
+  border: none;
+  border-radius: var(--radius);
+  padding: 1rem;
+  text-align: center;
+  cursor: pointer;
+  transition: transform var(--transition), box-shadow var(--transition);
+  box-shadow: 0 4px 8px var(--shadow);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.level-button:hover, .level-button:focus {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px var(--shadow);
+  outline: none;
+}
+
+.level-number {
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: var(--primary);
+  margin-bottom: 0.5rem;
+}
+
+.level-preview {
+  width: 80px;
+  height: 80px;
+  background-color: var(--primary-light);
+  border-radius: var(--radius);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: var(--primary-dark);
+}
+
+/* Tela de jogo */
+.game-screen {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 1rem;
+}
+
+.game-status {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.status-message {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: var(--primary-dark);
+  flex: 1;
+}
+
+.score-counter {
+  background-color: var(--primary-light);
+  padding: 0.5rem 1rem;
+  border-radius: var(--radius);
+  font-weight: bold;
+  color: var(--primary-dark);
+}
+
+/* Modo Contar */
+.count-container {
+  background-color: var(--card-bg);
+  border-radius: var(--radius);
+  padding: 1.5rem;
+  box-shadow: 0 4px 8px var(--shadow);
+  margin-bottom: 2rem;
+}
+
+.count-question {
+  margin-bottom: 2rem;
+}
+
+.count-question h3 {
+  font-size: 1.4rem;
+  text-align: center;
+  margin-bottom: 1.5rem;
+  color: var(--primary);
+}
+
+.count-objects-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+  padding: 1rem;
+  background-color: var(--background);
+  border-radius: var(--radius);
+  min-height: 150px;
+}
+
+.count-object {
+  font-size: 2rem;
+  transition: transform 0.2s;
+}
+
+.count-object.highlight {
+  transform: scale(1.2);
+}
+
+.count-answer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+.number-input {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.number-button {
+  width: 50px;
+  height: 50px;
+  background-color: var(--primary-light);
+  border: none;
+  border-radius: 50%;
+  font-size: 1.5rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.number-button:hover, .number-button:focus {
+  background-color: var(--primary);
+  color: white;
+  outline: none;
+}
+
+.number-button:active {
+  transform: scale(0.95);
+}
+
+.number-display {
+  width: 80px;
+  height: 80px;
+  background-color: var(--background);
+  border: 2px solid var(--primary);
+  border-radius: var(--radius);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+/* Modo Relacionar */
+.match-container {
+  background-color: var(--card-bg);
+  border-radius: var(--radius);
+  padding: 1.5rem;
+  box-shadow: 0 4px 8px var(--shadow);
+  margin-bottom: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.match-numbers {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+  padding: 1rem;
+  background-color: var(--primary-light);
+  border-radius: var(--radius);
+}
+
+.match-number {
+  width: 60px;
+  height: 60px;
+  background-color: var(--background);
+  border: 2px solid var(--primary);
+  border-radius: var(--radius);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.8rem;
+  font-weight: bold;
+  cursor: grab;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.match-number:hover, .match-number:focus {
+  transform: translateY(-5px);
+  box-shadow: 0 4px 8px var(--shadow);
+  outline: none;
+}
+
+.match-number.dragging {
+  opacity: 0.5;
+  cursor: grabbing;
+}
+
+.match-number.matched {
+  background-color: var(--success-light);
+  border-color: var(--success);
+}
+
+.match-objects {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1.5rem;
+}
+
+.match-object-group {
+  background-color: var(--background);
+  border: 2px dashed var(--primary-light);
+  border-radius: var(--radius);
+  padding: 1rem;
+  min-height: 150px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+.match-object-group.highlight {
+  border-color: var(--primary);
+  background-color: var(--primary-light);
+}
+
+.match-object-group.correct {
+  border-color: var(--success);
+  background-color: var(--success-light);
+}
+
+.match-object-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.match-object {
+  font-size: 1.5rem;
+}
+
+.match-drop-zone {
+  width: 60px;
+  height: 60px;
+  border: 2px dashed var(--primary-light);
+  border-radius: var(--radius);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.match-drop-zone.highlight {
+  border-color: var(--primary);
+  background-color: var(--primary-light);
+}
+
+/* Modo Sequência */
+.sequence-container {
+  background-color: var(--card-bg);
+  border-radius: var(--radius);
+  padding: 1.5rem;
+  box-shadow: 0 4px 8px var(--shadow);
+  margin-bottom: 2rem;
+}
+
+.sequence-question {
+  margin-bottom: 2rem;
+}
+
+.sequence-question h3 {
+  font-size: 1.4rem;
+  text-align: center;
+  margin-bottom: 1.5rem;
+  color: var(--primary);
+}
+
+.sequence-numbers {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+  padding: 1rem;
+  background-color: var(--background);
+  border-radius: var(--radius);
+}
+
+.sequence-number {
+  width: 60px;
+  height: 60px;
+  background-color: var(--primary-light);
+  border-radius: var(--radius);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.8rem;
+  font-weight: bold;
+}
+
+.sequence-missing {
+  background-color: var(--background);
+  border: 2px dashed var(--primary);
+}
+
+.sequence-options {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+.sequence-option {
+  width: 60px;
+  height: 60px;
+  background-color: var(--background);
+  border: 2px solid var(--primary);
+  border-radius: var(--radius);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.8rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.sequence-option:hover, .sequence-option:focus {
+  transform: translateY(-5px);
+  box-shadow: 0 4px 8px var(--shadow);
+  outline: none;
+}
+
+.sequence-option.selected {
+  background-color: var(--primary);
+  color: white;
+}
+
+.sequence-option.correct {
+  background-color: var(--success-light);
+  border-color: var(--success);
+}
+
+.sequence-option.incorrect {
+  background-color: var(--error-light);
+  border-color: var(--error);
+}
+
+/* Controles do jogo */
+.game-controls {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+  flex-wrap: wrap;
+}
+
+/* Tela de conclusão */
+.completion-screen {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 2rem;
+  background-color: var(--card-bg);
+  border-radius: var(--radius);
+  box-shadow: 0 8px 16px var(--shadow);
+  text-align: center;
+}
+
+.completion-message h2 {
+  font-size: 2rem;
+  color: var(--success);
+  margin-bottom: 1rem;
+}
+
+.completion-message p {
+  font-size: 1.2rem;
+  margin-bottom: 0.5rem;
+}
+
+.completion-animation {
+  font-size: 4rem;
+  margin: 1.5rem 0;
+  animation: bounce 1s infinite alternate;
+}
+
+.completion-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+.completion-buttons .button {
+  width: 100%;
+}
+
+/* Instruções */
+.instructions {
+  max-width: 800px;
+  margin: 2rem auto;
+  padding: 1.5rem;
+  background-color: var(--card-bg);
+  border-radius: var(--radius);
+  box-shadow: 0 4px 8px var(--shadow);
+}
+
+.instructions h3 {
+  font-size: 1.4rem;
+  color: var(--primary);
+  margin-bottom: 1rem;
+}
+
+.instructions p {
+  margin-bottom: 0.8rem;
+}
+
+.instructions strong {
+  color: var(--primary);
+}
+
+/* Animações */
+@keyframes bounce {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(-20px);
+  }
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.pulse {
+  animation: pulse 0.5s;
+}
+
+/* Responsividade */
+@media (min-width: 768px) {
+  .completion-buttons {
+    flex-direction: row;
+    justify-content: center;
+  }
+  
+  .completion-buttons .button {
+    width: auto;
+  }
+}
+
+@media (max-width: 767px) {
+  .game-status {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  
+  .match-container {
+    padding: 1rem;
+  }
+  
+  .match-objects {
+    grid-template-columns: 1fr;
+  }
+  
+  .number-button {
+    width: 40px;
+    height: 40px;
+  }
+  
+  .number-display {
+    width: 60px;
+    height: 60px;
+  }
+}

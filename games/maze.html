@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Labirinto Simples - Jogos para Crianças Autistas</title>
+    <link rel="stylesheet" href="../styles/main.css">
+    <link rel="stylesheet" href="../styles/maze.css">
+    <style>
+        .visually-hidden {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            margin: -1px;
+            padding: 0;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            border: 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="game-header">
+            <button id="back-button" class="button button-back" aria-label="Voltar para o menu principal">
+                <span class="back-icon">←</span> Voltar
+            </button>
+            <h1>Labirinto Simples</h1>
+            <div class="sound-control">
+                <button id="sound-toggle" class="sound-button sound-on" aria-label="Ativar ou desativar sons">
+                    <span class="sound-icon">🔊</span>
+                </button>
+            </div>
+        </header>
+        
+        <main>
+            <!-- Tela de seleção de tema -->
+            <section id="theme-selection" class="selection-screen">
+                <h2>Escolha um tema</h2>
+                <div class="theme-buttons">
+                    <button class="theme-button" data-theme="forest" aria-label="Tema Floresta Encantada">
+                        <div class="theme-icon forest-icon"></div>
+                        <h3 class="theme-name">Floresta Encantada</h3>
+                        <p class="theme-description">Ajude o animalzinho a encontrar sua casa na árvore</p>
+                    </button>
+                    
+                    <button class="theme-button" data-theme="ocean" aria-label="Tema Fundo do Mar">
+                        <div class="theme-icon ocean-icon"></div>
+                        <h3 class="theme-name">Fundo do Mar</h3>
+                        <p class="theme-description">Ajude o peixinho a encontrar o tesouro submarino</p>
+                    </button>
+                    
+                    <button class="theme-button" data-theme="space" aria-label="Tema Espaço Sideral">
+                        <div class="theme-icon space-icon"></div>
+                        <h3 class="theme-name">Espaço Sideral</h3>
+                        <p class="theme-description">Ajude o astronauta a encontrar a estação espacial</p>
+                    </button>
+                </div>
+            </section>
+            
+            <!-- Tela de seleção de nível -->
+            <section id="level-selection" class="selection-screen hidden">
+                <h2>Escolha um nível</h2>
+                <div class="level-grid">
+                    <button class="level-button" data-level="1" aria-label="Nível 1">
+                        <span class="level-number">1</span>
+                        <div class="level-preview" id="preview-1"></div>
+                    </button>
+                    
+                    <button class="level-button" data-level="2" aria-label="Nível 2">
+                        <span class="level-number">2</span>
+                        <div class="level-preview" id="preview-2"></div>
+                    </button>
+                    
+                    <button class="level-button" data-level="3" aria-label="Nível 3">
+                        <span class="level-number">3</span>
+                        <div class="level-preview" id="preview-3"></div>
+                    </button>
+                    
+                    <button class="level-button" data-level="4" aria-label="Nível 4">
+                        <span class="level-number">4</span>
+                        <div class="level-preview" id="preview-4"></div>
+                    </button>
+                    
+                    <button class="level-button" data-level="5" aria-label="Nível 5">
+                        <span class="level-number">5</span>
+                        <div class="level-preview" id="preview-5"></div>
+                    </button>
+                </div>
+                <button id="back-to-themes" class="button button-back" aria-label="Voltar para seleção de tema">
+                    <span class="back-icon">←</span> Voltar para temas
+                </button>
+            </section>
+            
+            <!-- Tela de jogo -->
+            <section id="game-screen" class="game-screen hidden">
+                <div class="game-status">
+                    <div class="status-message" id="status-message">Use as setas para mover o personagem até o objetivo</div>
+                    <div class="moves-counter">Movimentos: <span id="moves-count">0</span></div>
+                </div>
+                
+                <div class="maze-container">
+                    <div class="maze-board" id="maze-board">
+                        <!-- O labirinto será gerado dinamicamente aqui -->
+                    </div>
+                    
+                    <div class="maze-controls" id="touch-controls">
+                        <div class="control-row">
+                            <button class="control-button" id="up-button" aria-label="Mover para cima">
+                                <span class="control-icon">↑</span>
+                            </button>
+                        </div>
+                        <div class="control-row">
+                            <button class="control-button" id="left-button" aria-label="Mover para a esquerda">
+                                <span class="control-icon">←</span>
+                            </button>
+                            <button class="control-button" id="down-button" aria-label="Mover para baixo">
+                                <span class="control-icon">↓</span>
+                            </button>
+                            <button class="control-button" id="right-button" aria-label="Mover para a direita">
+                                <span class="control-icon">→</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="game-controls">
+                    <button id="hint-button" class="button" aria-label="Mostrar dica">
+                        <span class="hint-icon">💡</span> Dica
+                    </button>
+                    <button id="restart-button" class="button" aria-label="Reiniciar nível">
+                        <span class="restart-icon">🔄</span> Reiniciar
+                    </button>
+                    <button id="back-to-level" class="button button-back" aria-label="Voltar para seleção de nível">
+                        <span class="back-icon">←</span> Voltar
+                    </button>
+                </div>
+            </section>
+            
+            <!-- Tela de conclusão -->
+            <section id="completion-screen" class="completion-screen hidden">
+                <div class="completion-message">
+                    <h2>Parabéns!</h2>
+                    <p>Você encontrou o caminho!</p>
+                    <p>Movimentos: <span id="final-moves">0</span></p>
+                    <div class="completion-animation">🎉</div>
+                </div>
+                
+                <div class="completion-buttons">
+                    <button id="next-level-button" class="button" aria-label="Próximo nível">
+                        Próximo Nível <span class="next-icon">→</span>
+                    </button>
+                    <button id="replay-level-button" class="button" aria-label="Jogar novamente">
+                        <span class="replay-icon">🔄</span> Jogar Novamente
+                    </button>
+                    <button id="back-to-levels-button" class="button button-back" aria-label="Voltar para seleção de nível">
+                        <span class="back-icon">←</span> Escolher Outro Nível
+                    </button>
+                </div>
+            </section>
+            
+            <!-- Instruções -->
+            <section id="instructions" class="instructions">
+                <h3>Como Jogar</h3>
+                <p>Use as setas do teclado ou os botões na tela para mover o personagem pelo labirinto.</p>
+                <p>O objetivo é chegar até o final do labirinto.</p>
+                <p>Use o botão de dica se precisar de ajuda para encontrar o caminho.</p>
+                <div class="keyboard-instruction">
+                    <p>Você também pode usar as teclas:</p>
+                    <p><kbd>↑</kbd> para mover para cima</p>
+                    <p><kbd>↓</kbd> para mover para baixo</p>
+                    <p><kbd>←</kbd> para mover para a esquerda</p>
+                    <p><kbd>→</kbd> para mover para a direita</p>
+                </div>
+            </section>
+        </main>
+        
+        <footer class="footer">
+            <p>Desenvolvido especialmente para crianças do espectro autista</p>
+        </footer>
+    </div>
+    
+    <!-- Elementos de áudio -->
+    <audio id="move-sound" preload="auto">
+        <source src="../assets/sounds/move.mp3" type="audio/mpeg">
+    </audio>
+    <audio id="wall-sound" preload="auto">
+        <source src="../assets/sounds/wall.mp3" type="audio/mpeg">
+    </audio>
+    <audio id="success-sound" preload="auto">
+        <source src="../assets/sounds/success.mp3" type="audio/mpeg">
+    </audio>
+    <audio id="hint-sound" preload="auto">
+        <source src="../assets/sounds/hint.mp3" type="audio/mpeg">
+    </audio>
+    <audio id="completion-sound" preload="auto">
+        <source src="../assets/sounds/completion.mp3" type="audio/mpeg">
+    </audio>
+    
+    <!-- Elemento para anúncios de leitor de tela -->
+    <div id="screen-reader-announcer" class="visually-hidden" aria-live="polite"></div>
+    
+    <script src="../scripts/main.js"></script>
+    <script src="../scripts/maze.js"></script>
+</body>
+</html>

@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jogo de Expressões Faciais - Jogos para Crianças Autistas</title>
+    <link rel="stylesheet" href="../styles/main.css">
+    <link rel="stylesheet" href="../styles/expressions.css">
+    <style>
+        .visually-hidden {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            margin: -1px;
+            padding: 0;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            border: 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="game-header">
+            <button id="back-button" class="button button-back" aria-label="Voltar para o menu principal">
+                <span class="back-icon">←</span> Voltar
+            </button>
+            <h1>Jogo de Expressões Faciais</h1>
+            <div class="sound-control">
+                <button id="sound-toggle" class="sound-button sound-on" aria-label="Ativar ou desativar sons">
+                    <span class="sound-icon">🔊</span>
+                </button>
+            </div>
+        </header>
+        
+        <main>
+            <!-- Tela de seleção de modo -->
+            <section id="mode-selection" class="selection-screen">
+                <h2>Escolha um modo</h2>
+                <div class="mode-buttons">
+                    <button class="mode-button" data-mode="learn" aria-label="Modo Aprender">
+                        <div class="mode-icon learn-icon"></div>
+                        <h3 class="mode-name">Aprender</h3>
+                        <p class="mode-description">Conheça diferentes expressões faciais e emoções</p>
+                    </button>
+                    
+                    <button class="mode-button" data-mode="practice" aria-label="Modo Praticar">
+                        <div class="mode-icon practice-icon"></div>
+                        <h3 class="mode-name">Praticar</h3>
+                        <p class="mode-description">Identifique expressões faciais em um jogo divertido</p>
+                    </button>
+                </div>
+            </section>
+            
+            <!-- Tela de modo Aprender -->
+            <section id="learn-screen" class="learn-screen hidden">
+                <div class="emotion-carousel">
+                    <div class="emotion-card" id="emotion-card">
+                        <div class="emotion-image" id="emotion-image"></div>
+                        <h3 class="emotion-name" id="emotion-name">Feliz</h3>
+                        <p class="emotion-description" id="emotion-description">Quando estamos felizes, nosso rosto mostra um sorriso. Os cantos da boca sobem e os olhos podem ficar um pouco fechados.</p>
+                        <div class="emotion-examples">
+                            <h4>Exemplos:</h4>
+                            <ul id="emotion-examples">
+                                <li>Quando ganhamos um presente</li>
+                                <li>Quando brincamos com amigos</li>
+                                <li>Quando comemos algo gostoso</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="carousel-controls">
+                        <button id="prev-emotion" class="button" aria-label="Emoção anterior">
+                            <span class="prev-icon">←</span> Anterior
+                        </button>
+                        <button id="next-emotion" class="button" aria-label="Próxima emoção">
+                            Próxima <span class="next-icon">→</span>
+                        </button>
+                    </div>
+                </div>
+                
+                <button id="back-to-modes" class="button button-back" aria-label="Voltar para seleção de modo">
+                    <span class="back-icon">←</span> Voltar para modos
+                </button>
+            </section>
+            
+            <!-- Tela de seleção de nível para modo Praticar -->
+            <section id="level-selection" class="selection-screen hidden">
+                <h2>Escolha um nível</h2>
+                <div class="level-buttons">
+                    <button class="level-button button button-easy" data-level="easy" aria-label="Nível Fácil">
+                        <span class="level-icon">😊</span>
+                        <span class="level-name">Fácil</span>
+                    </button>
+                    
+                    <button class="level-button button button-medium" data-level="medium" aria-label="Nível Médio">
+                        <span class="level-icon">😃</span>
+                        <span class="level-name">Médio</span>
+                    </button>
+                    
+                    <button class="level-button button button-hard" data-level="hard" aria-label="Nível Difícil">
+                        <span class="level-icon">😎</span>
+                        <span class="level-name">Difícil</span>
+                    </button>
+                </div>
+                <button id="back-to-modes-from-level" class="button button-back" aria-label="Voltar para seleção de modo">
+                    <span class="back-icon">←</span> Voltar para modos
+                </button>
+            </section>
+            
+            <!-- Tela de jogo para modo Praticar -->
+            <section id="practice-screen" class="practice-screen hidden">
+                <div class="game-status">
+                    <div class="status-message" id="status-message">Qual emoção esta expressão representa?</div>
+                    <div class="score-counter">Pontos: <span id="score-count">0</span>/<span id="total-questions">0</span></div>
+                </div>
+                
+                <div class="practice-board">
+                    <div class="expression-container">
+                        <div class="expression-image" id="practice-expression-image"></div>
+                    </div>
+                    
+                    <div class="options-container" id="options-container">
+                        <!-- Opções serão adicionadas dinamicamente -->
+                    </div>
+                </div>
+                
+                <div class="game-controls">
+                    <button id="hint-button" class="button" aria-label="Mostrar dica">
+                        <span class="hint-icon">💡</span> Dica
+                    </button>
+                    <button id="next-question-button" class="button" aria-label="Próxima pergunta" disabled>
+                        Próxima <span class="next-icon">→</span>
+                    </button>
+                    <button id="back-to-level" class="button button-back" aria-label="Voltar para seleção de nível">
+                        <span class="back-icon">←</span> Voltar
+                    </button>
+                </div>
+            </section>
+            
+            <!-- Tela de conclusão -->
+            <section id="completion-screen" class="completion-screen hidden">
+                <div class="completion-message">
+                    <h2>Parabéns!</h2>
+                    <p>Você completou todas as perguntas!</p>
+                    <p>Sua pontuação: <span id="final-score">0</span>/<span id="final-total">0</span></p>
+                    <div class="completion-animation">🎉</div>
+                </div>
+                
+                <div class="completion-buttons">
+                    <button id="next-level-button" class="button" aria-label="Próximo nível">
+                        Próximo Nível <span class="next-icon">→</span>
+                    </button>
+                    <button id="replay-level-button" class="button" aria-label="Jogar novamente">
+                        <span class="replay-icon">🔄</span> Jogar Novamente
+                    </button>
+                    <button id="back-to-levels-button" class="button button-back" aria-label="Voltar para seleção de nível">
+                        <span class="back-icon">←</span> Escolher Outro Nível
+                    </button>
+                </div>
+            </section>
+            
+            <!-- Instruções -->
+            <section id="instructions" class="instructions">
+                <h3>Como Jogar</h3>
+                <p>No modo <strong>Aprender</strong>, você pode conhecer diferentes expressões faciais e o que elas significam.</p>
+                <p>No modo <strong>Praticar</strong>, você verá uma expressão facial e deverá escolher qual emoção ela representa.</p>
+                <p>Use o botão de dica se precisar de ajuda.</p>
+            </section>
+        </main>
+        
+        <footer class="footer">
+            <p>Desenvolvido especialmente para crianças do espectro autista</p>
+        </footer>
+    </div>
+    
+    <!-- Elementos de áudio -->
+    <audio id="success-sound" preload="auto">
+        <source src="../assets/sounds/success.mp3" type="audio/mpeg">
+    </audio>
+    <audio id="error-sound" preload="auto">
+        <source src="../assets/sounds/error.mp3" type="audio/mpeg">
+    </audio>
+    <audio id="hint-sound" preload="auto">
+        <source src="../assets/sounds/hint.mp3" type="audio/mpeg">
+    </audio>
+    <audio id="completion-sound" preload="auto">
+        <source src="../assets/sounds/completion.mp3" type="audio/mpeg">
+    </audio>
+    
+    <!-- Elemento para anúncios de leitor de tela -->
+    <div id="screen-reader-announcer" class="visually-hidden" aria-live="polite"></div>
+    
+    <script src="../scripts/main.js"></script>
+    <script src="../scripts/expressions.js"></script>
+</body>
+</html>

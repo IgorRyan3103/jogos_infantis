@@ -1,0 +1,287 @@
+/* Estilos específicos para o jogo Sequência de Cores */
+
+.game-header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.game-header h1 {
+  font-size: 2.2rem;
+  color: var(--primary);
+  margin-top: 0.5rem;
+}
+
+.back-icon {
+  font-size: 1.2rem;
+  margin-right: 0.5rem;
+}
+
+/* Seleção de nível */
+.level-selection {
+  max-width: 600px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.level-selection h2 {
+  font-size: 1.8rem;
+  margin-bottom: 1.5rem;
+  color: var(--text-primary);
+}
+
+.level-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.level-buttons .button {
+  display: flex;
+  flex-direction: column;
+  padding: 1.2rem;
+  font-size: 1.5rem;
+}
+
+.level-description {
+  font-size: 1rem;
+  font-weight: normal;
+  margin-top: 0.5rem;
+  opacity: 0.8;
+}
+
+.instructions {
+  background-color: var(--card-bg);
+  border-radius: var(--radius);
+  padding: 1.5rem;
+  margin-bottom: 2rem;
+  box-shadow: 0 2px 4px var(--shadow);
+}
+
+.instructions h3 {
+  font-size: 1.4rem;
+  margin-bottom: 1rem;
+  color: var(--primary);
+}
+
+.instructions p {
+  margin-bottom: 0.8rem;
+  font-size: 1.1rem;
+  text-align: left;
+}
+
+.start-button {
+  padding: 1rem 2rem;
+  font-size: 1.5rem;
+  background-color: var(--primary);
+}
+
+/* Área do jogo */
+.game-board {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.game-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.score-display, .round-display {
+  font-size: 1.2rem;
+  font-weight: bold;
+  padding: 0.5rem 1rem;
+  background-color: var(--primary-light);
+  border-radius: var(--radius);
+  color: var(--text-primary);
+}
+
+.status-message {
+  width: 100%;
+  font-size: 1.3rem;
+  font-weight: bold;
+  color: var(--primary-dark);
+  text-align: center;
+  min-height: 2rem;
+  margin-top: 0.5rem;
+}
+
+/* Botões de cores */
+.color-buttons {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  gap: 1.5rem;
+  margin: 2rem auto;
+  max-width: 400px;
+  aspect-ratio: 1/1;
+}
+
+.color-button {
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: opacity 0.2s, transform 0.2s;
+  box-shadow: 0 4px 8px var(--shadow);
+}
+
+.color-button:focus {
+  outline: 3px solid white;
+  outline-offset: 3px;
+}
+
+.color-button.red {
+  background-color: #E74C3C;
+}
+
+.color-button.blue {
+  background-color: #3498DB;
+}
+
+.color-button.green {
+  background-color: #2ECC71;
+}
+
+.color-button.yellow {
+  background-color: #F1C40F;
+}
+
+.color-button.active {
+  transform: scale(0.95);
+  opacity: 1;
+  box-shadow: 0 0 15px rgba(255, 255, 255, 0.8);
+}
+
+.color-button.disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* Controles do jogo */
+.game-controls {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+/* Tela de fim de jogo */
+.game-over-screen {
+  max-width: 600px;
+  margin: 0 auto;
+  text-align: center;
+  padding: 2rem;
+  background-color: var(--card-bg);
+  border-radius: var(--radius);
+  box-shadow: 0 4px 8px var(--shadow);
+}
+
+.game-over-screen h2 {
+  font-size: 2.5rem;
+  color: var(--primary);
+  margin-bottom: 1rem;
+}
+
+.game-over-screen p {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.game-over-screen p span {
+  font-weight: bold;
+  color: var(--primary-dark);
+}
+
+.completion-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  max-width: 300px;
+  margin: 2rem auto 0;
+}
+
+/* Animações */
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+  100% { transform: scale(1); }
+}
+
+.pulse {
+  animation: pulse 0.5s;
+}
+
+@keyframes flash {
+  0% { opacity: 1; }
+  50% { opacity: 0.5; }
+  100% { opacity: 1; }
+}
+
+.flash {
+  animation: flash 0.3s;
+}
+
+/* Responsividade */
+@media (min-width: 769px) {
+  .level-buttons {
+    flex-direction: row;
+    justify-content: center;
+  }
+  
+  .level-buttons .button {
+    flex: 1;
+    max-width: 200px;
+  }
+  
+  .completion-buttons {
+    flex-direction: row;
+    max-width: 100%;
+    justify-content: center;
+  }
+  
+  .color-buttons {
+    max-width: 500px;
+  }
+}
+
+@media (max-width: 768px) {
+  .game-info {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .color-buttons {
+    gap: 1rem;
+    max-width: 300px;
+  }
+  
+  .game-controls {
+    flex-direction: column;
+    max-width: 300px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+@media (max-width: 480px) {
+  .game-header h1 {
+    font-size: 1.8rem;
+  }
+  
+  .color-buttons {
+    gap: 0.8rem;
+    max-width: 250px;
+  }
+  
+  .status-message {
+    font-size: 1.1rem;
+  }
+  
+  .score-display, .round-display {
+    font-size: 1rem;
+  }
+}
